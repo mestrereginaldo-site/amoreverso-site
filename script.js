@@ -1,25 +1,192 @@
-// Sistema de Oráculo
+// Sistema de Oráculo com Respostas Completas
 const oracleAnswers = {
     tarot: [
-        "🃏 O Louco aparece em seu caminho! Este é o momento de novos começos. Aventure-se sem medo, pois o universo apoia cada passo que você der em direção ao desconhecido. A energia de renovação está forte. Você está sendo guiado para uma jornada de autodescoberta e liberdade. Confie no processo e deixe sua intuição ser sua bússola. O Louco também alerta para não ser impulsivo, mas sim seguir com coração leve e mente aberta. A aventura que se inicia trará aprendizados valiosos e encontros significativos.",
-        "👑 A Imperatriz traz fertilidade e criatividade. Seu projeto atual florescerá além das expectativas. Cuide dele com carinho e paciência, os frutos serão doces e abundantes. A Imperatriz também representa a conexão com a natureza e a sensualidade. É um convite para cuidar de si mesmo e do seu espaço, criando um ambiente acolhedor e próspero. Aproveite esta energia para manifestar seus desejos mais profundos, especialmente aqueles relacionados à família e ao lar.",
-        "⚖️ A Justiça revela que o equilíbrio será restaurado. Situações pendentes se resolverão a seu favor. Mantenha a integridade em todas as suas ações. Esta carta também fala sobre karma e consequências. A verdade virá à tona e você será recompensado por sua honestidade. Em questões legais, a Justiça é um sinal positivo. Em decisões, pondere todos os lados com equanimidade. O universo está alinhando tudo para que a justiça prevaleça."
+        `🃏 **O Louco** aparece em seu caminho! Esta carta representa novos começos, aventura e espontaneidade. O universo está sinalizando que é momento de dar um salto de fé em direção ao desconhecido. 
+
+**Interpretação Detalhada:**
+- **Novos Ciclos**: Você está no limiar de um novo capítulo em sua vida
+- **Liberdade**: É hora de se libertar de amarras e expectativas alheias
+- **Confiança**: O universo apoia sua jornada, mesmo que o caminho pareça incerto
+
+**Conselho Prático:** 
+Siga sua intuição sem medo. O Louco não carrega bagagem pesada - liberte-se do que não serve mais e confie que o caminho se revelará a cada passo.`,
+
+        `👑 **A Imperatriz** traz fertilidade e criatividade. Esta carta representa abundância, sensualidade e conexão com a natureza.
+
+**Interpretação Detalhada:**
+- **Criatividade**: Seus projetos atuais florescerão além das expectativas
+- **Abundância**: Prosperidade material e espiritual está a caminho
+- **Conexão**: Fortaleça seus laços familiares e com a natureza
+
+**Conselho Prático:**
+Dedique tempo para nutrir seus projetos como um jardim. A Imperatriz ensina que a paciência e o cuidado constante trazem os melhores frutos.`,
+
+        `⚖️ **A Justiça** revela que o equilíbrio será restaurado. Esta carta fala sobre karma, verdade e consequências.
+
+**Interpretação Detalhada:**
+- **Equilíbrio**: Situações pendentes se resolverão a seu favor
+- **Verdade**: Informações importantes virão à tona
+- **Responsabilidade**: Suas ações passadas estão influenciando o presente
+
+**Conselho Prático:**
+Mantenha integridade em todas as suas decisões. A Justiça garante que cada ação terá sua consequência correspondente.`
     ],
+
     runas: [
-        "ᚠ Fehu - A runa da prosperidade! Recursos materiais e espirituais estão chegando. Prepare-se para receber abundância de formas inesperadas. Fehu também representa o gado, simbolizando riqueza móvel. Esta runa indica que você colherá os frutos de trabalhos anteriores. É um bom momento para investir e economizar, mas também para compartilhar sua prosperidade. Cuidado com a ganância, pois Fehu lembra que a verdadeira riqueza está na capacidade de gerar e manter energia.",
-        "ᚢ Uruz - Força primal se manifesta. Você tem mais energia do que imagina para superar obstáculos. Confie em sua resistência interior. Uruz é a runa do boi selvagem, representando força bruta e saúde. Esta runa traz a energia de transformação e novos começos. É momento de agir com coragem e determinação. A força de Uruz também pode ajudar em processos de cura e no desenvolvimento de força de vontade. Use esta energia para quebrar velhos padrões.",
-        "ᚦ Thurisaz - Porta para novas oportunidades se abre. Momento de ação decisiva, mas cuidado com impulsividade. Thurisaz é a runa do gigante, representando forças poderosas e às vezes destrutivas. Esta runa pode indicar conflitos ou desafios, mas também a proteção necessária para superá-los. Use a energia de Thurisaz para se defender e para refletir antes de agir. É uma runa de proteção e de poder masculino. Aproveite para cortar laços que não servem mais."
+        `ᚠ **Fehu** - A runa da prosperidade e riqueza material e espiritual.
+
+**Significado Profundo:**
+Fehu representa o gado, que na antiguidade simbolizava riqueza móvel. Esta runa indica que você está prestes a receber os frutos de trabalhos anteriores.
+
+**Aspectos Positivos:**
+- Chegada de recursos inesperados
+- Sucesso em empreendimentos
+- Energia de manifestação poderosa
+
+**Atenção:**
+Fehu lembra que a verdadeira riqueza está na capacidade de compartilhar e circular energia. Evite a ganância.`,
+
+        `ᚢ **Uruz** - Força primal, saúde e transformação radical.
+
+**Significado Profundo:**
+Uruz é a runa do boi selvagem, representando força bruta, vitalidade e mudanças profundas.
+
+**Aspectos Positivos:**
+- Superação de obstáculos aparentemente intransponíveis
+- Recuperação de energia vital
+- Início de transformações significativas
+
+**Atenção:**
+Use esta força com sabedoria. Transformações profundas exigem coragem e podem ser intensas.`,
+
+        `ᚦ **Thurisaz** - Porta para novas oportunidades e proteção.
+
+**Significado Profundo:**
+Thurisaz é a runa do gigante, representando tanto perigo quanto proteção poderosa.
+
+**Aspectos Positivos:**
+- Novas portas se abrindo
+- Proteção contra energias negativas
+- Clareza para tomar decisões importantes
+
+**Atenção:**
+Momento de ação decisiva, mas evite impulsividade. Reflita antes de agir.`
     ],
+
     cristal: [
-        "🔮 A bola de cristal mostra um caminho iluminado à sua frente. Seus esforços recentes serão recompensados em breve. Continue com fé e determinação. A luz no final do túnel é real e você está mais perto do que imagina. O cristal também revela que alguém do passado pode retornar com uma mensagem importante. Fique atento aos sinais e sincronicidades. A resposta para sua pergunta está se manifestando de forma gradual, então tenha paciência e confiança.",
-        "💫 Neblina se dissipa revelando respostas claras. Dentro de 7 dias, a verdade que você busca será revelada de maneira surpreendente. Até lá, prepare-se meditando e anotando seus sonhos. O cristal indica que a resposta virá através de uma conversa casual ou de um insight repentino. A energia atual é de revelação e clareza. Evite tomar decisões precipitadas agora, espere até que a névoa se dissipe completamente.",
-        "✨ Reflexos de amor e harmonia envolvem seu ser. Relacionamentos se fortalecem e novas conexões significativas surgem no horizonte. O cristal mostra que você está emitindo uma vibração positiva que atrai pessoas alinhadas com sua essência. No amor, se está solteiro, alguém especial está se aproximando. Se está em um relacionamento, um reacendimento da paixão está próximo. Aproveite para trabalhar o amor próprio, pois é a base para todos os outros amores."
+        `🔮 **Visão da Bola de Cristal:** Um caminho iluminado se revela diante de você.
+
+**Mensagem Detalhada:**
+A névoa da incerteza está se dissipando para revelar respostas claras. Seus esforços recentes estão prestes a ser recompensados de maneira significativa.
+
+**Revelações:**
+- Dentro de 7 a 14 dias, uma resposta importante surgirá
+- Alguém do passado pode retornar com uma mensagem relevante
+- Seu campo energético está se fortalecendo
+
+**Orientações:**
+Continue com fé e determinação. A luz no final do túnel é real e você está mais próximo do que imagina.`,
+
+        `💫 **Visão da Bola de Cristal:** Energias de amor e harmonia.
+
+**Mensagem Detalhada:**
+Reflexos de amor e conexões genuínas envolvem seu campo energético. Relacionamentos existentes se aprofundam e novas conexões significativas estão a caminho.
+
+**Revelações:**
+- No amor: se solteiro, alguém especial se aproxima
+- Se comprometido, renovação da paixão
+- Amizades evoluem para conexões mais profundas
+
+**Orientações:**
+Trabalhe o amor próprio como base para atrair relacionamentos saudáveis.`
     ],
+
     numerologia: [
-        "7️⃣ Número 7 - Sabedoria espiritual. Período de introspecção trará as respostas profundas que você procura. Medite e ouça sua voz interior. O número 7 é ligado à espiritualidade, intuição e análise. É momento de estudar, pesquisar e se conectar com o divino. Você pode se sentir mais introspectivo, o que é positivo para o autoconhecimento. Confie nos seus insights e sonhos. Cuidado com o isolamento excessivo, busque equilíbrio entre solitude e convívio.",
-        "3️⃣ Número 3 - Criatividade em alta! Sua expressão artística trará cura e oportunidades únicas. Compartilhe seus dons com o mundo. O número 3 representa expansão, comunicação e alegria. É um ótimo momento para projetos criativos, socialização e viagens. A energia do 3 ajuda a manifestar seus desejos através do otimismo e da fé. Seja espontâneo e alegre, isso atrairá mais oportunidades. Cuidado com a dispersão, foque em um projeto de cada vez.",
-        "8️⃣ Número 8 - Prosperidade material. Seus projetos profissionais estão prestes a florescer. Invista em parcerias estratégicas. O número 8 traz a energia do infinito, representando abundância e poder pessoal. É tempo de colher os frutos de seu trabalho e de assumir posições de liderança. Aproveite para fazer planejamentos de longo prazo e investimentos. Mantenha o equilíbrio entre vida pessoal e profissional. A generosidade atrai mais prosperidade."
+        `7️⃣ **Número 7** - Sabedoria espiritual e introspecção.
+
+**Vibração Energética:**
+O 7 é o número do buscador, do filósofo, da espiritualidade e da análise profunda.
+
+**Influências:**
+- Período ideal para estudo e pesquisa
+- Desenvolvimento da intuição
+- Conexão com o divino
+
+**Aplicação Prática:**
+Reserve momentos de solitude para meditar e ouvir sua voz interior. Insights valiosos surgirão durante a quietude.`,
+
+        `3️⃣ **Número 3** - Criatividade, comunicação e alegria.
+
+**Vibração Energética:**
+O 3 representa expressão, otimismo e expansão em todas as áreas da vida.
+
+**Influências:**
+- Projetos criativos ganham impulso
+- Comunicação fluida e efetiva
+- Atração de oportunidades sociais
+
+**Aplicação Prática:**
+Compartilhe seus talentos com o mundo. Sua expressão autêntica atrará reconhecimento e novas oportunidades.`
     ]
 };
 
-// ... (restante do script.js anterior) ...
+// ... (mantenha o restante do script anterior igual) ...
+
+function generateAnswer() {
+    const question = document.getElementById('userQuestion').value.trim();
+    const oracleType = document.getElementById('oracleType').value;
+    const answerContainer = document.getElementById('oracleAnswer');
+    
+    if (!question) {
+        answerContainer.innerHTML = `
+            <div class="answer-error">
+                🔮 Por favor, faça uma pergunta sincera ao oráculo
+            </div>
+        `;
+        answerContainer.classList.add('show');
+        return;
+    }
+    
+    // Efeito de carregamento
+    answerContainer.innerHTML = `
+        <div class="answer-loading">
+            <div class="loading-crystal"></div>
+            <p>Consultando os registros akáshicos e conectando com a sabedoria ancestral...</p>
+        </div>
+    `;
+    answerContainer.classList.add('show');
+    
+    // Simular tempo de consulta
+    setTimeout(() => {
+        const answers = oracleAnswers[oracleType];
+        const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+        
+        answerContainer.innerHTML = `
+            <div class="answer-success">
+                <div class="answer-header">
+                    <h3>✨ Resposta do ${document.getElementById('oracleType').options[document.getElementById('oracleType').selectedIndex].text} ✨</h3>
+                    <p class="user-question">"${question}"</p>
+                </div>
+                <div class="answer-text">
+                    ${randomAnswer.split('\n').map(line => `<p>${line}</p>`).join('')}
+                </div>
+                <div class="answer-actions">
+                    <button class="share-btn" onclick="shareAnswer()">
+                        <span>📤</span>
+                        Compartilhar Revelação
+                    </button>
+                    <button class="premium-btn" onclick="buyReport()">
+                        <span>💎</span>
+                        Relatório Completo (R$ 9,90)
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Atualizar contador de consultas
+        updateConsultationCount();
+        
+    }, 3500);
+}
+
+// ... (mantenha o restante das funções iguais) ...
