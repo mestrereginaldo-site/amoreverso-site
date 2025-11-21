@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os 7 Sinais de que o Amor Verdadeiro Está Chegando - Amoreverso</title>
+    <meta name="description" content="Descubra os sinais universais que indicam a chegada do amor verdadeiro. Aprenda a identificar sincronicidades, sonhos premonitórios e sinais energéticos.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F59E0B;
+            --accent: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--light);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== CONTEÚDO DO ARTIGO ===== */
+        .article-hero {
+            padding: 140px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .article-category {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            padding: 4rem 0;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--secondary);
+        }
+
+        .article-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--light);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+        }
+
+        .highlight-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--light);
+        }
+
+        .sign-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            color: var(--darker);
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .ritual-steps {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+        }
+
+        .step {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--darker);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2.2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                padding: 2rem 0;
+            }
+
+            .article-content h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🔮</span>
+                <span class="logo-text">Amoreverso</span>
+            </a>
+            <nav class="nav">
+                <a href="../index.html#oraculo">Oráculo</a>
+                <a href="../index.html#servicos">Serviços</a>
+                <a href="../blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Artigo Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-category">Amor & Relacionamentos</div>
+            <h1 class="article-title">Os 7 Sinais de que o Amor Verdadeiro Está Chegando</h1>
+            <div class="article-meta">
+                <span>Por Mestre Alvaro</span>
+                <span>21 de Novembro de 2025</span>
+                <span>12 min de leitura</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo do Artigo -->
+    <article class="article-content">
+        <div class="container">
+            <p>Em minha jornada de mais de 20 anos como conselheiro espiritual e estudioso das leis universais, testemunhei inúmeros casos de pessoas que receberam sinais claros da chegada do amor verdadeiro. Muitas vezes, esses sinais passam despercebidos, mas quando aprendemos a reconhecê-los, podemos nos preparar energeticamente para receber essa bênção divina.</p>
+
+            <p>O amor verdadeiro não é apenas uma conexão romântica - é um encontro de almas que transcende o tempo e o espaço. É uma força cósmica que nos transforma profundamente e nos ajuda a evoluir espiritualmente. Neste artigo completo, vou compartilhar com você os 7 sinais mais poderosos que indicam a aproximação do amor verdadeiro.</p>
+
+            <div class="highlight-box">
+                <p>"O amor verdadeiro não procura, mas se prepara. Quando sua energia está alinhada, o universo conspira para unir almas gêmeas." - Mestre Alvaro</p>
+            </div>
+
+            <h2>🧠 1. Sincronicidades e Coincidências Significativas</h2>
+            
+            <p>O universo começa a enviar mensagens através de sincronicidades - aquelas "coincidências" que são tão perfeitas que não podem ser obra do acaso. Você começa a notar padrões repetitivos: ver o mesmo número frequentemente (11:11, 222, 333), encontrar a mesma palavra ou frase em lugares diferentes, ou sonhar repetidamente com situações específicas.</p>
+
+            <h3>Como Reconhecer as Sincronicidades Verdadeiras:</h3>
+            <ul>
+                <li><strong>Números repetitivos:</strong> 1111 (novos começos), 222 (equilíbrio e parceria), 333 (proteção espiritual)</li>
+                <li><strong>Encontros inesperados:</strong> Pessoas que aparecem em sua vida trazendo mensagens importantes</li>
+                <li><strong>Sonhos recorrentes:</strong> Sonhar com água limpa, pontes, ou encontrar alguém específico</li>
+                <li><strong>Intuição aguçada:</strong> Saber coisas sem explicação lógica</li>
+            </ul>
+
+            <p>Quando essas sincronicidades começam a acontecer com frequência, é um sinal claro de que o universo está alinhando os caminhos para o encontro amoroso.</p>
+
+            <h2>💫 2. Mudança na Sua Energia Pessoal</h2>
+            
+            <p>Antes do amor verdadeiro chegar, ocorre uma transformação energética profunda. Você pode notar que:</p>
+
+            <ul>
+                <li><strong>Aumento da autoestima:</strong> Começa a se valorizar mais e a estabelecer limites saudáveis</li>
+                <li><strong>Paz interior:</strong> Uma sensação de contentamento mesmo estando sozinho(a)</li>
+                <li><strong>Atração por crescimento:</strong> Interesse em desenvolvimento pessoal e espiritual</li>
+                <li><strong>Limpeza energética:</strong> Vontade de organizar espaços e cortar relações tóxicas</li>
+            </ul>
+
+            <p>Esta transformação é essencial porque o amor verdadeiro só pode habitar um coração que já está em paz consigo mesmo. Você para de "procurar" amor e começa a "ser" amor.</p>
+
+            <h2>🌙 3. Sonhos Premonitórios e Visões</h2>
+            
+            <p>O plano espiritual comunica-se conosco principalmente através dos sonhos. Quando o amor verdadeiro está próximo, é comum ter sonhos vívidos e significativos:</p>
+
+            <div class="ritual-steps">
+                <h3>Sonhos Comuns Antes do Encontro:</h3>
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Sonhar com água limpa e corrente:</strong> Representa purificação emocional e o fluxo do amor
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Encontrar objetos preciosos:</strong> Simboliza descobrir algo de grande valor (o amor)</
