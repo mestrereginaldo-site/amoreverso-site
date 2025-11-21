@@ -41,7 +41,7 @@
             padding: 0 20px;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER COM MENU HAMBURGUER ===== */
         .header {
             background: rgba(31, 41, 55, 0.95);
             backdrop-filter: blur(10px);
@@ -68,6 +68,7 @@
             font-weight: 700;
             color: var(--light);
             text-decoration: none;
+            z-index: 1001;
         }
 
         .logo-icon {
@@ -84,10 +85,33 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
 
         .nav a:hover {
             color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Menu Hamburguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
 
         /* ===== HERO SECTION ===== */
@@ -339,11 +363,11 @@
 
         .share-btn, .premium-btn {
             flex: 1;
-            min-width: 250px;
-            padding: 1.3rem 2rem;
+            min-width: 280px;
+            padding: 1.4rem 2rem;
             border: none;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -621,7 +645,7 @@
             margin-top: 3rem;
         }
 
-        /* ===== NEWSLETTER ===== */
+        /* ===== NEWSLETTER CORRIGIDO ===== */
         .newsletter-section {
             padding: 80px 0;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -728,7 +752,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== RESPONSIVIDADE ===== */
+        /* ===== RESPONSIVIDADE COMPLETA ===== */
         @media (max-width: 768px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -740,13 +764,44 @@
                 font-size: 2.5rem;
             }
             
+            /* Menu Hamburguer Mobile */
             .nav {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: 0.3s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
             }
             
             .crystal-ball {
-                width: 300px;
-                height: 300px;
+                width: 280px;
+                height: 280px;
             }
             
             .oracle-options {
@@ -762,8 +817,13 @@
                 flex-direction: column;
             }
             
+            .newsletter-form input {
+                min-width: 100%;
+            }
+            
             .hero-stats {
                 justify-content: center;
+                gap: 2rem;
             }
             
             .answer-actions {
@@ -773,25 +833,64 @@
             .share-btn, .premium-btn {
                 min-width: 100%;
                 padding: 1.5rem 1rem;
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .crystal-ball {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Fixo -->
+    <!-- Header Fixo com Menu Hamburguer -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
                 <span class="logo-icon">🔮</span>
                 <span class="logo-text">Amoreverso</span>
             </a>
-            <nav class="nav">
+            <nav class="nav" id="nav">
                 <a href="#oraculo">Oráculo</a>
                 <a href="#servicos">Serviços</a>
                 <a href="#blog">Blog</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
             </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -925,7 +1024,7 @@
                         <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida e como preparar sua energia para recebê-lo. Aprenda a identificar sincronicidades e sinais do universo.</p>
                         <div class="blog-meta">
                             <span>21 Nov 2025</span>
-                            <a href="#" class="read-more">Ler Artigo Completo →</a>
+                            <a href="artigos/artigo-amor-verdadeiro.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
@@ -937,10 +1036,10 @@
                     </div>
                     <div class="blog-content">
                         <h3>Lua Nova em Sagitário: Ritual de Expansão</h3>
-                        <p>Aproveite a energia da lua nova para abrir novos caminhos e oportunidades. Ritual completo com passo a passo para atrair expansão em todas as áreas da sua vida.</p>
+                        <p>Aproveite a energia da lua nova de Dezembro para abrir novos caminhos e oportunidades. Ritual completo com passo a passo para atrair expansão em todas as áreas da sua vida.</p>
                         <div class="blog-meta">
                             <span>19 Nov 2025</span>
-                            <a href="#" class="read-more">Ler Artigo Completo →</a>
+                            <a href="artigos/artigo-lua-sagitario.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
@@ -955,19 +1054,19 @@
                         <p>Leitura diária gratuita do tarot com interpretação personalizada para seu signo e energia atual. Descubra a mensagem que os arcanos têm para você hoje.</p>
                         <div class="blog-meta">
                             <span>18 Nov 2025</span>
-                            <a href="#" class="read-more">Ler Artigo Completo →</a>
+                            <a href="artigos/artigo-tarot-diario.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
             </div>
             
             <div class="blog-cta">
-                <a href="#" class="cta-button">Ver Todos os Artigos</a>
+                <a href="blog.html" class="cta-button">Ver Todos os Artigos</a>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Newsletter Corrigido -->
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
@@ -1003,7 +1102,7 @@
                 
                 <div class="footer-section">
                     <h4>Links Úteis</h4>
-                    <a href="#blog">Blog Esotérico</a>
+                    <a href="blog.html">Blog Esotérico</a>
                     <a href="#faq">Perguntas Frequentes</a>
                     <a href="#privacidade">Política de Privacidade</a>
                 </div>
@@ -1261,6 +1360,23 @@
                 `;
             }, 3000);
         }
+
+        // ===== MENU HAMBURGUER =====
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
 
         // ===== SCROLL SUAVE =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
