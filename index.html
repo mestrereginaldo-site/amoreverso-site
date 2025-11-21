@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amoreverso - Seu Oráculo Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Místico -->
+    <header class="header-mistico">
+        <div class="container">
+            <h1 class="logo">Amoreverso</h1>
+            <nav>
+                <ul>
+                    <li><a href="#oraculo">Oráculo</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Descubra o que o universo reserva para você</h2>
+            <p>Consultas precisas através de inteligência artificial e sabedoria ancestral</p>
+            <button class="cta-button" onclick="iniciarConsulta()">Faça sua pergunta ao oráculo</button>
+        </div>
+        <div class="crystal-ball"></div>
+    </section>
+
+    <!-- Consulta Rápida -->
+    <section id="oraculo" class="consulta-rapida">
+        <h3>Oráculo do Amoreverso</h3>
+        <div class="consulta-container">
+            <textarea id="perguntaUsuario" placeholder="Digite sua pergunta... Ex: Devo mudar de emprego?"></textarea>
+            <select id="tipoOráculo">
+                <option value="tarot">Tarot</option>
+                <option value="runas">Runas</option>
+                <option value="cristal">Bola de Cristal</option>
+            </select>
+            <button onclick="gerarResposta()">Receber Resposta</button>
+        </div>
+        <div id="respostaOráculo" class="resposta"></div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="servicos">
+        <h3>Nossos Serviços Esotéricos</h3>
+        <div class="servicos-grid">
+            <div class="servico-card">
+                <h4>🔮 Leitura Básica</h4>
+                <p>Grátis</p>
+                <ul>
+                    <li>3 perguntas por dia</li>
+                    <li>Resposta instantânea</li>
+                </ul>
+                <button>Usar Grátis</button>
+            </div>
+            <div class="servico-card premium">
+                <h4>💎 Relatório Detalhado</h4>
+                <p>R$ 9,90</p>
+                <ul>
+                    <li>Análise completa</li>
+                    <li>PDF personalizado</li>
+                    <li>Previsão 30 dias</li>
+                </ul>
+                <button class="premium-btn">Comprar Agora</button>
+            </div>
+            <div class="servico-card vip">
+                <h4>👁️ Consulta com Especialista</h4>
+                <p>R$ 49,90</p>
+                <ul>
+                    <li>Videochamada 30min</li>
+                    <li>Análise personalizada</li>
+                    <li>Plano de ação</li>
+                </ul>
+                <button class="vip-btn">Agendar Consulta</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
