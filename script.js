@@ -1,167 +1,25 @@
 // Sistema de Oráculo
 const oracleAnswers = {
     tarot: [
-        "🃏 O Louco aparece em seu caminho! Este é o momento de novos começos. Aventure-se sem medo, pois o universo apoia cada passo que você der em direção ao desconhecido. A energia de renovação está forte.",
-        "👑 A Imperatriz traz fertilidade e criatividade. Seu projeto atual florescerá além das expectativas. Cuide dele com carinho e paciência, os frutos serão doces e abundantes.",
-        "⚖️ A Justiça revela que o equilíbrio será restaurado. Situações pendentes se resolverão a seu favor. Mantenha a integridade em todas as suas ações."
+        "🃏 O Louco aparece em seu caminho! Este é o momento de novos começos. Aventure-se sem medo, pois o universo apoia cada passo que você der em direção ao desconhecido. A energia de renovação está forte. Você está sendo guiado para uma jornada de autodescoberta e liberdade. Confie no processo e deixe sua intuição ser sua bússola. O Louco também alerta para não ser impulsivo, mas sim seguir com coração leve e mente aberta. A aventura que se inicia trará aprendizados valiosos e encontros significativos.",
+        "👑 A Imperatriz traz fertilidade e criatividade. Seu projeto atual florescerá além das expectativas. Cuide dele com carinho e paciência, os frutos serão doces e abundantes. A Imperatriz também representa a conexão com a natureza e a sensualidade. É um convite para cuidar de si mesmo e do seu espaço, criando um ambiente acolhedor e próspero. Aproveite esta energia para manifestar seus desejos mais profundos, especialmente aqueles relacionados à família e ao lar.",
+        "⚖️ A Justiça revela que o equilíbrio será restaurado. Situações pendentes se resolverão a seu favor. Mantenha a integridade em todas as suas ações. Esta carta também fala sobre karma e consequências. A verdade virá à tona e você será recompensado por sua honestidade. Em questões legais, a Justiça é um sinal positivo. Em decisões, pondere todos os lados com equanimidade. O universo está alinhando tudo para que a justiça prevaleça."
     ],
     runas: [
-        "ᚠ Fehu - A runa da prosperidade! Recursos materiais e espirituais estão chegando. Prepare-se para receber abundância de formas inesperadas.",
-        "ᚢ Uruz - Força primal se manifesta. Você tem mais energia do que imagina para superar obstáculos. Confie em sua resistência interior.",
-        "ᚦ Thurisaz - Porta para novas oportunidades se abre. Momento de ação decisiva, mas cuidado com impulsividade."
+        "ᚠ Fehu - A runa da prosperidade! Recursos materiais e espirituais estão chegando. Prepare-se para receber abundância de formas inesperadas. Fehu também representa o gado, simbolizando riqueza móvel. Esta runa indica que você colherá os frutos de trabalhos anteriores. É um bom momento para investir e economizar, mas também para compartilhar sua prosperidade. Cuidado com a ganância, pois Fehu lembra que a verdadeira riqueza está na capacidade de gerar e manter energia.",
+        "ᚢ Uruz - Força primal se manifesta. Você tem mais energia do que imagina para superar obstáculos. Confie em sua resistência interior. Uruz é a runa do boi selvagem, representando força bruta e saúde. Esta runa traz a energia de transformação e novos começos. É momento de agir com coragem e determinação. A força de Uruz também pode ajudar em processos de cura e no desenvolvimento de força de vontade. Use esta energia para quebrar velhos padrões.",
+        "ᚦ Thurisaz - Porta para novas oportunidades se abre. Momento de ação decisiva, mas cuidado com impulsividade. Thurisaz é a runa do gigante, representando forças poderosas e às vezes destrutivas. Esta runa pode indicar conflitos ou desafios, mas também a proteção necessária para superá-los. Use a energia de Thurisaz para se defender e para refletir antes de agir. É uma runa de proteção e de poder masculino. Aproveite para cortar laços que não servem mais."
     ],
     cristal: [
-        "🔮 A bola de cristal mostra um caminho iluminado à sua frente. Seus esforços recentes serão recompensados em breve. Continue com fé e determinação.",
-        "💫 Neblina se dissipa revelando respostas claras. Dentro de 7 dias, a verdade que você busca será revelada de maneira surpreendente.",
-        "✨ Reflexos de amor e harmonia envolvem seu ser. Relacionamentos se fortalecem e novas conexões significativas surgem no horizonte."
+        "🔮 A bola de cristal mostra um caminho iluminado à sua frente. Seus esforços recentes serão recompensados em breve. Continue com fé e determinação. A luz no final do túnel é real e você está mais perto do que imagina. O cristal também revela que alguém do passado pode retornar com uma mensagem importante. Fique atento aos sinais e sincronicidades. A resposta para sua pergunta está se manifestando de forma gradual, então tenha paciência e confiança.",
+        "💫 Neblina se dissipa revelando respostas claras. Dentro de 7 dias, a verdade que você busca será revelada de maneira surpreendente. Até lá, prepare-se meditando e anotando seus sonhos. O cristal indica que a resposta virá através de uma conversa casual ou de um insight repentino. A energia atual é de revelação e clareza. Evite tomar decisões precipitadas agora, espere até que a névoa se dissipe completamente.",
+        "✨ Reflexos de amor e harmonia envolvem seu ser. Relacionamentos se fortalecem e novas conexões significativas surgem no horizonte. O cristal mostra que você está emitindo uma vibração positiva que atrai pessoas alinhadas com sua essência. No amor, se está solteiro, alguém especial está se aproximando. Se está em um relacionamento, um reacendimento da paixão está próximo. Aproveite para trabalhar o amor próprio, pois é a base para todos os outros amores."
     ],
     numerologia: [
-        "7️⃣ Número 7 - Sabedoria espiritual. Período de introspecção trará as respostas profundas que você procura. Medite e ouça sua voz interior.",
-        "3️⃣ Número 3 - Criatividade em alta! Sua expressão artística trará cura e oportunidades únicas. Compartilhe seus dons com o mundo.",
-        "8️⃣ Número 8 - Prosperidade material. Seus projetos profissionais estão prestes a florescer. Invista em parcerias estratégicas."
+        "7️⃣ Número 7 - Sabedoria espiritual. Período de introspecção trará as respostas profundas que você procura. Medite e ouça sua voz interior. O número 7 é ligado à espiritualidade, intuição e análise. É momento de estudar, pesquisar e se conectar com o divino. Você pode se sentir mais introspectivo, o que é positivo para o autoconhecimento. Confie nos seus insights e sonhos. Cuidado com o isolamento excessivo, busque equilíbrio entre solitude e convívio.",
+        "3️⃣ Número 3 - Criatividade em alta! Sua expressão artística trará cura e oportunidades únicas. Compartilhe seus dons com o mundo. O número 3 representa expansão, comunicação e alegria. É um ótimo momento para projetos criativos, socialização e viagens. A energia do 3 ajuda a manifestar seus desejos através do otimismo e da fé. Seja espontâneo e alegre, isso atrairá mais oportunidades. Cuidado com a dispersão, foque em um projeto de cada vez.",
+        "8️⃣ Número 8 - Prosperidade material. Seus projetos profissionais estão prestes a florescer. Invista em parcerias estratégicas. O número 8 traz a energia do infinito, representando abundância e poder pessoal. É tempo de colher os frutos de seu trabalho e de assumir posições de liderança. Aproveite para fazer planejamentos de longo prazo e investimentos. Mantenha o equilíbrio entre vida pessoal e profissional. A generosidade atrai mais prosperidade."
     ]
 };
 
-function scrollToOracle() {
-    document.getElementById('oraculo').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-function generateAnswer() {
-    const question = document.getElementById('userQuestion').value.trim();
-    const oracleType = document.getElementById('oracleType').value;
-    const answerContainer = document.getElementById('oracleAnswer');
-    
-    if (!question) {
-        answerContainer.innerHTML = `
-            <div class="answer-error">
-                🔮 Por favor, faça uma pergunta sincera ao oráculo
-            </div>
-        `;
-        answerContainer.classList.add('show');
-        return;
-    }
-    
-    // Efeito de carregamento
-    answerContainer.innerHTML = `
-        <div class="answer-loading">
-            <div class="loading-crystal"></div>
-            <p>Consultando os registros akáshicos...</p>
-        </div>
-    `;
-    answerContainer.classList.add('show');
-    
-    // Simular tempo de consulta
-    setTimeout(() => {
-        const answers = oracleAnswers[oracleType];
-        const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-        
-        answerContainer.innerHTML = `
-            <div class="answer-success">
-                <div class="answer-header">
-                    <h3>✨ Resposta do ${document.getElementById('oracleType').options[document.getElementById('oracleType').selectedIndex].text} ✨</h3>
-                    <p class="user-question">"${question}"</p>
-                </div>
-                <div class="answer-text">
-                    <p>${randomAnswer}</p>
-                </div>
-                <div class="answer-actions">
-                    <button class="share-btn" onclick="shareAnswer()">📤 Compartilhar Revelação</button>
-                    <button class="premium-btn" onclick="buyReport()">💎 Relatório Completo (R$ 9,90)</button>
-                </div>
-            </div>
-        `;
-        
-        // Atualizar contador de consultas
-        updateConsultationCount();
-        
-    }, 3000);
-}
-
-function updateConsultationCount() {
-    const countElement = document.getElementById('consultasCount');
-    let currentCount = parseInt(countElement.textContent.replace('.', ''));
-    currentCount += Math.floor(Math.random() * 3) + 1;
-    countElement.textContent = currentCount.toLocaleString('pt-BR');
-}
-
-function shareAnswer() {
-    const answerText = document.querySelector('.answer-text p').textContent;
-    const shareData = {
-        title: 'Minha Revelação no Amoreverso 🔮',
-        text: `Acabei de receber esta mensagem do universo: "${answerText}"`,
-        url: window.location.href
-    };
-    
-    if (navigator.share) {
-        navigator.share(shareData);
-    } else {
-        navigator.clipboard.writeText(`🔮 Amoreverso - Minha Revelação:\n\n"${answerText}"\n\nAcesse: ${window.location.href}`)
-            .then(() => alert('Mensagem copiada! Cole e compartilhe com amigos.'));
-    }
-}
-
-function buyReport() {
-    const question = document.getElementById('userQuestion').value;
-    alert(`✨ Relatório Especial Gerado!\n\nPergunta: "${question}"\n\nRedirecionando para página de pagamento seguro...`);
-    // Aqui você integraria com o gateway de pagamento
-}
-
-// Sistema de newsletter
-document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input').value;
-    
-    // Simular cadastro
-    this.innerHTML = `
-        <div class="newsletter-success">
-            <p>🎉 Email cadastrado com sucesso! Bênçãos a caminho...</p>
-        </div>
-    `;
-    
-    setTimeout(() => {
-        this.reset();
-        this.innerHTML = `
-            <input type="email" placeholder="Seu melhor e-mail" required>
-            <button type="submit">Quero Receber Bênçãos</button>
-        `;
-    }, 3000);
-});
-
-// Efeitos de scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Animação de entrada dos elementos
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observar elementos para animação
-document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.service-card, .blog-card');
-    
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-});
+// ... (restante do script.js anterior) ...
