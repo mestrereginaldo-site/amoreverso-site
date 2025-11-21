@@ -3,208 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amoreverso - Seu Oráculo Digital e Portal Esotérico</title>
-    <meta name="description" content="Consultas esotéricas precisas através de IA e sabedoria ancestral. Tarot, runas, bola de cristal e muito mais.">
+    <title>Amoreverso - Seu Oráculo Digital</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header Místico -->
-    <header class="header-mistico">
+    <!-- Header Fixo -->
+    <header class="header">
         <div class="container">
-            <h1 class="logo">Amoreverso</h1>
-            <nav>
-                <ul>
-                    <li><a href="#oraculo">Oráculo</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+            <div class="logo">
+                <span class="logo-icon">🔮</span>
+                <span class="logo-text">Amoreverso</span>
+            </div>
+            <nav class="nav">
+                <a href="#oraculo">Oráculo</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#blog">Blog</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h2>Descubra o que o universo reserva para você</h2>
-            <p>Consultas precisas através de inteligência artificial e sabedoria ancestral</p>
-            <button class="cta-button" onclick="iniciarConsulta()">Faça sua pergunta ao oráculo</button>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="number">15.847</span>
-                    <span class="label">Consultas Hoje</span>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Descubra o que o universo reserva para você</h1>
+                <p class="hero-subtitle">Consultas precisas através de inteligência artificial e sabedoria ancestral</p>
+                <button class="cta-button" onclick="scrollToOracle()">Faça sua pergunta ao oráculo</button>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="consultasCount">15.847</div>
+                        <div class="stat-label">Consultas Hoje</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">Precisão</div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="number">94%</span>
-                    <span class="label">Precisão</span>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="crystal-ball">
+                    <div class="crystal-inner"></div>
+                    <div class="crystal-glow"></div>
                 </div>
             </div>
         </div>
-        <div class="crystal-ball"></div>
     </section>
 
-    <!-- Consulta Rápida -->
-    <section id="oraculo" class="consulta-rapida">
-        <h3>Oráculo do Amoreverso</h3>
-        <div class="consulta-container">
-            <textarea id="perguntaUsuario" placeholder="Digite sua pergunta... Ex: Devo mudar de emprego? Meu amor está próximo? Como melhorar minha energia?"></textarea>
-            <select id="tipoOráculo">
-                <option value="tarot">Tarot Cigano</option>
-                <option value="runas">Runas Nórdicas</option>
-                <option value="cristal">Bola de Cristal</option>
-                <option value="numerologia">Numerologia</option>
-            </select>
-            <button onclick="gerarResposta()">Receber Resposta do Universo</button>
+    <!-- Oráculo Section -->
+    <section id="oraculo" class="oracle-section">
+        <div class="container">
+            <h2 class="section-title">Oráculo do Amoreverso</h2>
+            
+            <div class="oracle-container">
+                <div class="input-group">
+                    <textarea 
+                        id="userQuestion" 
+                        placeholder="Digite sua pergunta... Ex: Como atrair prosperidade? Devo mudar de emprego?"
+                        rows="4"
+                    ></textarea>
+                </div>
+                
+                <div class="oracle-options">
+                    <select id="oracleType">
+                        <option value="tarot">Tarot Cigano</option>
+                        <option value="runas">Runas Nórdicas</option>
+                        <option value="cristal">Bola de Cristal</option>
+                        <option value="numerologia">Numerologia</option>
+                    </select>
+                    
+                    <button class="oracle-button" onclick="generateAnswer()">
+                        <span class="button-icon">✨</span>
+                        Receber Resposta do Universo
+                    </button>
+                </div>
+            </div>
+            
+            <div id="oracleAnswer" class="answer-container"></div>
         </div>
-        <div id="respostaOráculo" class="resposta"></div>
     </section>
 
-    <!-- Serviços (mantido igual) -->
-    <section id="servicos" class="servicos">
-        <h3>Nossos Serviços Esotéricos</h3>
-        <div class="servicos-grid">
-            <!-- Cards de serviços mantidos iguais -->
+    <!-- Serviços Section -->
+    <section id="servicos" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços Esotéricos</h2>
+            
+            <div class="services-grid">
+                <!-- Serviço Gratuito -->
+                <div class="service-card">
+                    <div class="service-icon">🔮</div>
+                    <h3 class="service-title">Leitura Básica</h3>
+                    <div class="service-price">Grátis</div>
+                    <ul class="service-features">
+                        <li>3 perguntas por dia</li>
+                        <li>Resposta instantânea</li>
+                        <li>Interpretação básica</li>
+                    </ul>
+                    <button class="service-button" onclick="scrollToOracle()">Usar Grátis</button>
+                </div>
+                
+                <!-- Serviço Premium -->
+                <div class="service-card premium">
+                    <div class="service-badge">Mais Popular</div>
+                    <div class="service-icon">💎</div>
+                    <h3 class="service-title">Relatório Detalhado</h3>
+                    <div class="service-price">R$ 9,90</div>
+                    <ul class="service-features">
+                        <li>Análise completa da pergunta</li>
+                        <li>PDF personalizado</li>
+                        <li>Previsão para 30 dias</li>
+                        <li>Ritual personalizado</li>
+                    </ul>
+                    <button class="service-button premium-btn">Comprar Agora</button>
+                </div>
+                
+                <!-- Serviço VIP -->
+                <div class="service-card vip">
+                    <div class="service-icon">👁️</div>
+                    <h3 class="service-title">Consulta com Especialista</h3>
+                    <div class="service-price">R$ 49,90</div>
+                    <ul class="service-features">
+                        <li>Videochamada de 30min</li>
+                        <li>Análise personalizada</li>
+                        <li>Plano de ação espiritual</li>
+                        <li>Suporte por 7 dias</li>
+                    </ul>
+                    <button class="service-button vip-btn">Agendar Consulta</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Blog Expandido -->
-    <section id="blog" class="blog">
-        <h3>Blog Esotérico - Sabedoria do Universo</h3>
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-image">✨</div>
-                <div class="blog-content">
-                    <h4>Os 7 Sinais de que o Amor Verdadeiro Está Chegando</h4>
-                    <div class="blog-meta">
-                        <span>Por Mestre Alvaro</span>
-                        <span>21 Nov 2025</span>
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Blog Esotérico</h2>
+            <p class="section-subtitle">Sabedoria ancestral para sua jornada espiritual</p>
+            
+            <div class="blog-grid">
+                <!-- Artigo 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="blog-category">Amor</div>
                     </div>
-                    <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida e como preparar sua energia para recebê-lo.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">🌙</div>
-                <div class="blog-content">
-                    <h4>Lua Nova em Sagitário: Como Aproveitar Esta Energia</h4>
-                    <div class="blog-meta">
-                        <span>Por Sacerdotisa Luna</span>
-                        <span>19 Nov 2025</span>
+                    <div class="blog-content">
+                        <h3>Os 7 Sinais de que o Amor Verdadeiro Está Chegando</h3>
+                        <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida...</p>
+                        <div class="blog-meta">
+                            <span>21 Nov 2025</span>
+                            <a href="#" class="read-more">Ler mais →</a>
+                        </div>
                     </div>
-                    <p>Ritual completo para a lua nova e como canalizar a energia de Sagitário para expansão e novos horizontes.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">🔮</div>
-                <div class="blog-content">
-                    <h4>Tarot do Dia: A Mensagem dos Arcanos para Você</h4>
-                    <div class="blog-meta">
-                        <span>Por Mestre dos Arcanos</span>
-                        <span>18 Nov 2025</span>
+                </article>
+                
+                <!-- Artigo 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="blog-category">Lua</div>
                     </div>
-                    <p>Leitura diária gratuita do tarot com interpretação personalizada para seu signo e energia atual.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">💎</div>
-                <div class="blog-content">
-                    <h4>Cristais para Prosperidade: Guia Completo</h4>
-                    <div class="blog-meta">
-                        <span>Por Geólogo Místico</span>
-                        <span>15 Nov 2025</span>
+                    <div class="blog-content">
+                        <h3>Lua Nova em Sagitário: Ritual de Expansão</h3>
+                        <p>Aproveite a energia da lua nova para abrir novos caminhos e oportunidades...</p>
+                        <div class="blog-meta">
+                            <span>19 Nov 2025</span>
+                            <a href="#" class="read-more">Ler mais →</a>
+                        </div>
                     </div>
-                    <p>Quais cristais usar para atrair abundância, como carregá-los e onde posicionar em casa ou trabalho.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">🕯️</div>
-                <div class="blog-content">
-                    <h4>Rituais de Proteção Energética para Iniciantes</h4>
-                    <div class="blog-meta">
-                        <span>Por Guardião das Energias</span>
-                        <span>12 Nov 2025</span>
+                </article>
+                
+                <!-- Artigo 3 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="blog-category">Tarot</div>
                     </div>
-                    <p>Passo a passo simples para criar um escudo protetor contra energias negativas no dia a dia.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image">📿</div>
-                <div class="blog-content">
-                    <h4>Meditação Guiada: Conecte-se com seu Eu Superior</h4>
-                    <div class="blog-meta">
-                        <span>Por Mestre Zen</span>
-                        <span>10 Nov 2025</span>
+                    <div class="blog-content">
+                        <h3>Tarot do Dia: Mensagem dos Arcanos</h3>
+                        <p>Leitura diária gratuita com interpretação personalizada para seu signo...</p>
+                        <div class="blog-meta">
+                            <span>18 Nov 2025</span>
+                            <a href="#" class="read-more">Ler mais →</a>
+                        </div>
                     </div>
-                    <p>Áudio de meditação exclusivo para elevar sua consciência e receber orientação espiritual.</p>
-                    <a href="#" class="read-more">Ler Artigo Completo →</a>
-                </div>
-            </article>
+                </article>
+            </div>
         </div>
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter">
-        <h3>Receba Previsões Diárias no Seu E-mail</h3>
-        <p>Inscreva-se e receba gratuitamente mensagens do universo, rituais exclusivos e ofertas especiais</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Seu melhor e-mail" required>
-            <button type="submit">Quero Receber Bênçãos</button>
-        </form>
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Receba Previsões Diárias</h2>
+                <p>Inscreva-se e receba mensagens do universo diretamente no seu e-mail</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Receber Bênçãos</button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Amoreverso</h4>
-                <p>Seu portal de sabedoria esotérica e conexão espiritual. Junte-se a mais de 50 mil buscadores da verdade.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Serviços</h4>
-                <ul>
-                    <li><a href="#">Consulta de Tarot</a></li>
-                    <li><a href="#">Leitura de Runas</a></li>
-                    <li><a href="#">Bola de Cristal</a></li>
-                    <li><a href="#">Mapa Astral</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Links Úteis</h4>
-                <ul>
-                    <li><a href="#">Blog Esotérico</a></li>
-                    <li><a href="#">Perguntas Frequentes</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Termos de Uso</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contato</h4>
-                <ul>
-                    <li>Email: contato@amoreverso.com.br</li>
-                    <li>WhatsApp: (11) 99999-9999</li>
-                </ul>
-                <div class="social-links">
-                    <a href="#" title="Instagram">📷</a>
-                    <a href="#" title="TikTok">🎵</a>
-                    <a href="#" title="YouTube">▶️</a>
-                    <a href="#" title="Facebook">👍</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">🔮</span>
+                        <span class="logo-text">Amoreverso</span>
+                    </div>
+                    <p>Seu portal de sabedoria esotérica e conexão espiritual.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <a href="#">Consulta de Tarot</a>
+                    <a href="#">Leitura de Runas</a>
+                    <a href="#">Bola de Cristal</a>
+                    <a href="#">Mapa Astral</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="#">Blog Esotérico</a>
+                    <a href="#">Perguntas Frequentes</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>contato@amoreverso.com.br</p>
+                    <p>WhatsApp: (11) 99999-9999</p>
+                    <div class="social-links">
+                        <a href="#">Instagram</a>
+                        <a href="#">TikTok</a>
+                        <a href="#">YouTube</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 Amoreverso.com.br - Todos os direitos reservados. CNPJ: 12.345.678/0001-99</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amoreverso.com.br - Todos os direitos reservados</p>
+            </div>
         </div>
     </footer>
 
