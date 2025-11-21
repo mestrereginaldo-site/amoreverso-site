@@ -4,46 +4,751 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Esotérico - Amoreverso</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Artigos completos sobre tarot, astrologia, numerologia e espiritualidade. Guias práticos para sua jornada espiritual.">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F59E0B;
+            --accent: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER COM MENU HAMBURGUER ===== */
+        .header {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* ===== BLOG HERO ===== */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== FILTROS DO BLOG ===== */
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--secondary);
+            color: var(--darker);
+        }
+
+        /* ===== LISTAGEM DE ARTIGOS ===== */
+        .blog-listing {
+            padding: 50px 0 100px;
+        }
+
+        .blog-grid-expanded {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card-expanded {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card-expanded:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-image-expanded {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-category-expanded {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .blog-content-expanded {
+            padding: 2rem;
+        }
+
+        .blog-content-expanded h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            line-height: 1.4;
+        }
+
+        .blog-content-expanded p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-meta-expanded {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-meta-expanded span {
+            color: var(--gray);
+        }
+
+        .read-time {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .read-more-expanded {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more-expanded:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== PAGINAÇÃO ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .page-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--secondary);
+            color: var(--darker);
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--darker);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: 0.3s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .blog-filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .blog-grid-expanded {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-content-expanded {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header Fixo com Menu Hamburguer -->
     <header class="header">
         <div class="container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">🔮</span>
                 <span class="logo-text">Amoreverso</span>
-            </div>
-            <nav class="nav">
-                <a href="index.html">Home</a>
+            </a>
+            <nav class="nav" id="nav">
                 <a href="index.html#oraculo">Oráculo</a>
                 <a href="index.html#servicos">Serviços</a>
                 <a href="blog.html" class="active">Blog</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="index.html#contato">Contato</a>
             </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
+    <!-- Blog Hero Section -->
     <section class="blog-hero">
         <div class="container">
             <h1>Blog Esotérico Amoreverso</h1>
-            <p>Sabedoria ancestral, guias práticos e insights espirituais para sua jornada</p>
+            <p>Sabedoria ancestral, guias práticos e insights espirituais para sua jornada de autoconhecimento e evolução</p>
         </div>
     </section>
 
+    <!-- Filtros do Blog -->
+    <div class="container">
+        <div class="blog-filters">
+            <button class="filter-btn active">Todos os Artigos</button>
+            <button class="filter-btn">Amor & Relacionamentos</button>
+            <button class="filter-btn">Astrologia & Lua</button>
+            <button class="filter-btn">Tarot & Oráculos</button>
+            <button class="filter-btn">Numerologia</button>
+            <button class="filter-btn">Rituais & Magia</button>
+        </div>
+    </div>
+
+    <!-- Listagem de Artigos -->
     <section class="blog-listing">
         <div class="container">
-            <div class="blog-filters">
-                <button class="filter-btn active">Todos</button>
-                <button class="filter-btn">Amor</button>
-                <button class="filter-btn">Prosperidade</button>
-                <button class="filter-btn">Espiritualidade</button>
-                <button class="filter-btn">Rituais</button>
+            <div class="blog-grid-expanded">
+                <!-- Artigo 1 - Destaque -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Amor</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Os 7 Sinais de que o Amor Verdadeiro Está Chegando</h3>
+                        <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida. Aprenda a identificar sincronicidades, sonhos premonitórios e sinais energéticos que anunciam o encontro da alma gêmea.</p>
+                        <div class="blog-meta-expanded">
+                            <span>21 Nov 2025</span>
+                            <span class="read-time">12 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-amor-verdadeiro.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo 2 -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Lua</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Lua Nova em Sagitário: Ritual de Expansão para Dezembro 2025</h3>
+                        <p>Aproveite a energia da lua nova em Sagitário para abrir novos caminhos e oportunidades. Ritual completo com passo a passo para atrair expansão em todas as áreas da sua vida.</p>
+                        <div class="blog-meta-expanded">
+                            <span>19 Nov 2025</span>
+                            <span class="read-time">8 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-lua-sagitario.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo 3 -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Tarot</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Tarot do Dia: Mensagem dos Arcanos para sua Jornada</h3>
+                        <p>Leitura diária gratuita do tarot com interpretação personalizada para seu signo e energia atual. Descubra a mensagem que os arcanos têm para você hoje.</p>
+                        <div class="blog-meta-expanded">
+                            <span>18 Nov 2025</span>
+                            <span class="read-time">6 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-tarot-diario.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo 4 -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Prosperidade</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Ritual da Vela Verde: Atraia Prosperidade em 7 Dias</h3>
+                        <p>Ritual poderoso com vela verde para atrair abundância financeira e oportunidades de crescimento. Passo a passo completo para realizar em casa.</p>
+                        <div class="blog-meta-expanded">
+                            <span>15 Nov 2025</span>
+                            <span class="read-time">10 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-ritual-prosperidade.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo 5 -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Numerologia</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Número de Vida 2026: O que os Números Revelam</h3>
+                        <p>Calcule seu número de vida para 2026 e descubra as energias, desafios e oportunidades que o próximo ano reserva para você.</p>
+                        <div class="blog-meta-expanded">
+                            <span>12 Nov 2025</span>
+                            <span class="read-time">7 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-numerologia-2026.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artigo 6 -->
+                <article class="blog-card-expanded">
+                    <div class="blog-image-expanded">
+                        <div class="blog-category-expanded">Proteção</div>
+                    </div>
+                    <div class="blog-content-expanded">
+                        <h3>Como Criar um Escudo Energético de Proteção</h3>
+                        <p>Técnicas poderosas para se proteger de energias negativas e manter seu campo energético limpo e fortalecido no dia a dia.</p>
+                        <div class="blog-meta-expanded">
+                            <span>10 Nov 2025</span>
+                            <span class="read-time">9 min de leitura</span>
+                        </div>
+                        <a href="artigos/artigo-protecao-energetica.html" class="read-more-expanded">
+                            Ler Artigo Completo →
+                        </a>
+                    </div>
+                </article>
             </div>
 
-            <div class="blog-grid expanded">
-                <!-- Artigos serão listados aqui - mesma estrutura do index mas expandida -->
+            <!-- Paginação -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">Próximo →</button>
             </div>
         </div>
     </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Receba Previsões Diárias</h2>
+                <p>Inscreva-se e receba mensagens do universo diretamente no seu e-mail</p>
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Receber Bênçãos</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">🔮</span>
+                        <span class="logo-text">Amoreverso</span>
+                    </div>
+                    <p>Seu portal de sabedoria esotérica e conexão espiritual.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <a href="index.html#servicos">Consulta de Tarot</a>
+                    <a href="index.html#servicos">Leitura de Runas</a>
+                    <a href="index.html#servicos">Bola de Cristal</a>
+                    <a href="index.html#servicos">Mapa Astral</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="blog.html">Blog Esotérico</a>
+                    <a href="index.html#faq">Perguntas Frequentes</a>
+                    <a href="index.html#privacidade">Política de Privacidade</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>contato@amoreverso.com.br</p>
+                    <p>WhatsApp: (11) 99999-9999</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="TikTok">🎵</a>
+                        <a href="#" title="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amoreverso.com.br - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MENU HAMBURGUER =====
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // ===== FILTROS DO BLOG =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // ===== PAGINAÇÃO =====
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.textContent.includes('Próximo')) {
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // ===== NEWSLETTER =====
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.querySelector('input').value;
+            
+            // Simular cadastro
+            form.innerHTML = `
+                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px; width: 100%;">
+                    <p style="margin: 0; font-weight: 600; color: white;">🎉 Email cadastrado com sucesso! Bênçãos a caminho...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                form.reset();
+                form.innerHTML = `
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Receber Bênçãos</button>
+                `;
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
