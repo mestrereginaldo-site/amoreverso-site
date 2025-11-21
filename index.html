@@ -5,22 +5,790 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amoreverso - Seu Oráculo Digital e Portal Esotérico</title>
     <meta name="description" content="Consultas esotéricas precisas através de IA. Tarot, runas, bola de cristal e muito mais. Descubra o que o universo reserva para você.">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F59E0B;
+            --accent: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            position: relative;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== BOLA DE CRISTAL ===== */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .crystal-ball {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .crystal-inner {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(224, 247, 250, 0.6) 30%,
+                rgba(139, 92, 246, 0.3) 70%);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 100px rgba(255, 255, 255, 0.6),
+                0 0 80px rgba(139, 92, 246, 0.4);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .crystal-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, 
+                rgba(139, 92, 246, 0.2) 0%,
+                transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* ===== SEÇÕES GERAIS ===== */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* ===== ORÁCULO SECTION ===== */
+        .oracle-section {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .oracle-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+            padding: 1.5rem;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            color: var(--dark);
+            font-family: inherit;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+        }
+
+        .oracle-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .oracle-options select {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .oracle-button {
+            flex: 2;
+            min-width: 250px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 1.2rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .oracle-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .answer-container {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .answer-container.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== BOTÕES DE AÇÃO MELHORADOS ===== */
+        .answer-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn, .premium-btn {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.3rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .premium-btn {
+            background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+            color: #2d3436;
+            box-shadow: 0 8px 25px rgba(254, 202, 87, 0.3);
+        }
+
+        .share-btn:hover, .premium-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== MELHORIAS NA RESPOSTA ===== */
+        .answer-success {
+            animation: slideInUp 0.6s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .answer-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .answer-header h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .user-question {
+            font-style: italic;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .answer-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .answer-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== SERVIÇOS SECTION ===== */
+        .services-section {
+            padding: 100px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: var(--darker);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-button {
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .service-card:not(.premium):not(.vip) .service-button {
+            background: var(--gray);
+            color: white;
+        }
+
+        .premium {
+            border: 2px solid var(--secondary);
+        }
+
+        .premium-btn {
+            background: var(--secondary) !important;
+            color: var(--darker) !important;
+        }
+
+        .vip {
+            border: 2px solid var(--accent);
+        }
+
+        .vip-btn {
+            background: var(--accent) !important;
+            color: white !important;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-section {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .blog-meta span {
+            color: var(--gray);
+        }
+
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .blog-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--darker);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+            
+            .crystal-ball {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .oracle-options {
+                flex-direction: column;
+            }
+            
+            .oracle-options select,
+            .oracle-button {
+                min-width: 100%;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .answer-actions {
+                flex-direction: column;
+            }
+            
+            .share-btn, .premium-btn {
+                min-width: 100%;
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Fixo -->
     <header class="header">
         <div class="container">
-            <div class="logo">
+            <a href="#" class="logo">
                 <span class="logo-icon">🔮</span>
                 <span class="logo-text">Amoreverso</span>
-            </div>
+            </a>
             <nav class="nav">
                 <a href="#oraculo">Oráculo</a>
                 <a href="#servicos">Serviços</a>
-                <a href="blog.html">Blog</a>
+                <a href="#blog">Blog</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
             </nav>
@@ -95,6 +863,7 @@
             <h2 class="section-title">Nossos Serviços Esotéricos</h2>
             
             <div class="services-grid">
+                <!-- Serviço Gratuito -->
                 <div class="service-card">
                     <div class="service-icon">🔮</div>
                     <h3 class="service-title">Leitura Básica</h3>
@@ -107,6 +876,7 @@
                     <button class="service-button" onclick="scrollToOracle()">Usar Grátis</button>
                 </div>
                 
+                <!-- Serviço Premium -->
                 <div class="service-card premium">
                     <div class="service-badge">Mais Popular</div>
                     <div class="service-icon">💎</div>
@@ -121,6 +891,7 @@
                     <button class="service-button premium-btn" onclick="buyReport()">Comprar Agora</button>
                 </div>
                 
+                <!-- Serviço VIP -->
                 <div class="service-card vip">
                     <div class="service-icon">👁️</div>
                     <h3 class="service-title">Consulta com Especialista</h3>
@@ -137,13 +908,14 @@
         </div>
     </section>
 
-    <!-- Blog Preview Section -->
+    <!-- Blog Section -->
     <section id="blog" class="blog-section">
         <div class="container">
             <h2 class="section-title">Blog Esotérico</h2>
             <p class="section-subtitle">Sabedoria ancestral para sua jornada espiritual</p>
             
             <div class="blog-grid">
+                <!-- Artigo 1 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Amor</div>
@@ -153,11 +925,12 @@
                         <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida e como preparar sua energia para recebê-lo. Aprenda a identificar sincronicidades e sinais do universo.</p>
                         <div class="blog-meta">
                             <span>21 Nov 2025</span>
-                            <a href="artigos/artigo-amor-verdadeiro.html" class="read-more">Ler Artigo Completo →</a>
+                            <a href="#" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
                 
+                <!-- Artigo 2 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Lua</div>
@@ -167,11 +940,12 @@
                         <p>Aproveite a energia da lua nova para abrir novos caminhos e oportunidades. Ritual completo com passo a passo para atrair expansão em todas as áreas da sua vida.</p>
                         <div class="blog-meta">
                             <span>19 Nov 2025</span>
-                            <a href="artigos/artigo-lua-sagitario.html" class="read-more">Ler Artigo Completo →</a>
+                            <a href="#" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
                 
+                <!-- Artigo 3 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Tarot</div>
@@ -181,14 +955,14 @@
                         <p>Leitura diária gratuita do tarot com interpretação personalizada para seu signo e energia atual. Descubra a mensagem que os arcanos têm para você hoje.</p>
                         <div class="blog-meta">
                             <span>18 Nov 2025</span>
-                            <a href="artigos/artigo-tarot-diario.html" class="read-more">Ler Artigo Completo →</a>
+                            <a href="#" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
             </div>
             
             <div class="blog-cta">
-                <a href="blog.html" class="cta-button secondary">Ver Todos os Artigos</a>
+                <a href="#" class="cta-button">Ver Todos os Artigos</a>
             </div>
         </div>
     </section>
@@ -199,7 +973,7 @@
             <div class="newsletter-content">
                 <h2>Receba Previsões Diárias</h2>
                 <p>Inscreva-se e receba mensagens do universo diretamente no seu e-mail</p>
-                <form class="newsletter-form">
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
                     <input type="email" placeholder="Seu melhor e-mail" required>
                     <button type="submit">Quero Receber Bênçãos</button>
                 </form>
@@ -229,7 +1003,7 @@
                 
                 <div class="footer-section">
                     <h4>Links Úteis</h4>
-                    <a href="blog.html">Blog Esotérico</a>
+                    <a href="#blog">Blog Esotérico</a>
                     <a href="#faq">Perguntas Frequentes</a>
                     <a href="#privacidade">Política de Privacidade</a>
                 </div>
@@ -252,6 +1026,281 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // ===== SISTEMA DE ORÁCULO COM RESPOSTAS COMPLETAS =====
+        const oracleAnswers = {
+            tarot: [
+                `🃏 <strong>O Louco</strong> aparece em seu caminho! Esta carta representa novos começos, aventura e espontaneidade. O universo está sinalizando que é momento de dar um salto de fé em direção ao desconhecido. 
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Novos Ciclos</strong>: Você está no limiar de um novo capítulo em sua vida
+                <br>• <strong>Liberdade</strong>: É hora de se libertar de amarras e expectativas alheias
+                <br>• <strong>Confiança</strong>: O universo apoia sua jornada, mesmo que o caminho pareça incerto
+
+                <br><br><strong>Conselho Prático:</strong> 
+                Siga sua intuição sem medo. O Louco não carrega bagagem pesada - liberte-se do que não serve mais e confie que o caminho se revelará a cada passo.`,
+
+                `👑 <strong>A Imperatriz</strong> traz fertilidade e criatividade. Esta carta representa abundância, sensualidade e conexão com a natureza.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Criatividade</strong>: Seus projetos atuais florescerão além das expectativas
+                <br>• <strong>Abundância</strong>: Prosperidade material e espiritual está a caminho
+                <br>• <strong>Conexão</strong>: Fortaleça seus laços familiares e com a natureza
+
+                <br><br><strong>Conselho Prático:</strong>
+                Dedique tempo para nutrir seus projetos como um jardim. A Imperatriz ensina que a paciência e o cuidado constante trazem os melhores frutos.`,
+
+                `⚖️ <strong>A Justiça</strong> revela que o equilíbrio será restaurado. Esta carta fala sobre karma, verdade e consequências.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Equilíbrio</strong>: Situações pendentes se resolverão a seu favor
+                <br>• <strong>Verdade</strong>: Informações importantes virão à tona
+                <br>• <strong>Responsabilidade</strong>: Suas ações passadas estão influenciando o presente
+
+                <br><br><strong>Conselho Prático:</strong>
+                Mantenha integridade em todas as suas decisões. A Justiça garante que cada ação terá sua consequência correspondente.`
+            ],
+
+            runas: [
+                `ᚠ <strong>Fehu</strong> - A runa da prosperidade e riqueza material e espiritual.
+
+                <br><br><strong>Significado Profundo:</strong>
+                Fehu representa o gado, que na antiguidade simbolizava riqueza móvel. Esta runa indica que você está prestes a receber os frutos de trabalhos anteriores.
+
+                <br><br><strong>Aspectos Positivos:</strong>
+                <br>• Chegada de recursos inesperados
+                <br>• Sucesso em empreendimentos
+                <br>• Energia de manifestação poderosa
+
+                <br><br><strong>Atenção:</strong>
+                Fehu lembra que a verdadeira riqueza está na capacidade de compartilhar e circular energia. Evite a ganância.`,
+
+                `ᚢ <strong>Uruz</strong> - Força primal, saúde e transformação radical.
+
+                <br><br><strong>Significado Profundo:</strong>
+                Uruz é a runa do boi selvagem, representando força bruta, vitalidade e mudanças profundas.
+
+                <br><br><strong>Aspectos Positivos:</strong>
+                <br>• Superação de obstáculos aparentemente intransponíveis
+                <br>• Recuperação de energia vital
+                <br>• Início de transformações significativas
+
+                <br><br><strong>Atenção:</strong>
+                Use esta força com sabedoria. Transformações profundas exigem coragem e podem ser intensas.`
+            ],
+
+            cristal: [
+                `🔮 <strong>Visão da Bola de Cristal:</strong> Um caminho iluminado se revela diante de você.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                A névoa da incerteza está se dissipando para revelar respostas claras. Seus esforços recentes estão prestes a ser recompensados de maneira significativa.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Dentro de 7 a 14 dias, uma resposta importante surgirá
+                <br>• Alguém do passado pode retornar com uma mensagem relevante
+                <br>• Seu campo energético está se fortalecendo
+
+                <br><br><strong>Orientações:</strong>
+                Continue com fé e determinação. A luz no final do túnel é real e você está mais próximo do que imagina.`,
+
+                `💫 <strong>Visão da Bola de Cristal:</strong> Energias de amor e harmonia.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                Reflexos de amor e conexões genuínas envolvem seu campo energético. Relacionamentos existentes se aprofundam e novas conexões significativas estão a caminho.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• No amor: se solteiro, alguém especial se aproxima
+                <br>• Se comprometido, renovação da paixão
+                <br>• Amizades evoluem para conexões mais profundas
+
+                <br><br><strong>Orientações:</strong>
+                Trabalhe o amor próprio como base para atrair relacionamentos saudáveis.`
+            ],
+
+            numerologia: [
+                `7️⃣ <strong>Número 7</strong> - Sabedoria espiritual e introspecção.
+
+                <br><br><strong>Vibração Energética:</strong>
+                O 7 é o número do buscador, do filósofo, da espiritualidade e da análise profunda.
+
+                <br><br><strong>Influências:</strong>
+                <br>• Período ideal para estudo e pesquisa
+                <br>• Desenvolvimento da intuição
+                <br>• Conexão com o divino
+
+                <br><br><strong>Aplicação Prática:</strong>
+                Reserve momentos de solitude para meditar e ouvir sua voz interior. Insights valiosos surgirão durante a quietude.`,
+
+                `3️⃣ <strong>Número 3</strong> - Criatividade, comunicação e alegria.
+
+                <br><br><strong>Vibração Energética:</strong>
+                O 3 representa expressão, otimismo e expansão em todas as áreas da vida.
+
+                <br><br><strong>Influências:</strong>
+                <br>• Projetos criativos ganham impulso
+                <br>• Comunicação fluida e efetiva
+                <br>• Atração de oportunidades sociais
+
+                <br><br><strong>Aplicação Prática:</strong>
+                Compartilhe seus talentos com o mundo. Sua expressão autêntica atrará reconhecimento e novas oportunidades.`
+            ]
+        };
+
+        // ===== FUNÇÕES PRINCIPAIS =====
+        function scrollToOracle() {
+            document.getElementById('oraculo').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function generateAnswer() {
+            const question = document.getElementById('userQuestion').value.trim();
+            const oracleType = document.getElementById('oracleType').value;
+            const answerContainer = document.getElementById('oracleAnswer');
+            
+            if (!question) {
+                answerContainer.innerHTML = `
+                    <div class="answer-error">
+                        🔮 Por favor, faça uma pergunta sincera ao oráculo
+                    </div>
+                `;
+                answerContainer.classList.add('show');
+                return;
+            }
+            
+            // Efeito de carregamento
+            answerContainer.innerHTML = `
+                <div class="answer-loading">
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔮</div>
+                        <p>Consultando os registros akáshicos e conectando com a sabedoria ancestral...</p>
+                    </div>
+                </div>
+            `;
+            answerContainer.classList.add('show');
+            
+            // Simular tempo de consulta
+            setTimeout(() => {
+                const answers = oracleAnswers[oracleType];
+                const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+                
+                answerContainer.innerHTML = `
+                    <div class="answer-success">
+                        <div class="answer-header">
+                            <h3>✨ Resposta do ${document.getElementById('oracleType').options[document.getElementById('oracleType').selectedIndex].text} ✨</h3>
+                            <p class="user-question">"${question}"</p>
+                        </div>
+                        <div class="answer-text">
+                            ${randomAnswer}
+                        </div>
+                        <div class="answer-actions">
+                            <button class="share-btn" onclick="shareAnswer()">
+                                <span>📤</span>
+                                Compartilhar Revelação
+                            </button>
+                            <button class="premium-btn" onclick="buyReport()">
+                                <span>💎</span>
+                                Relatório Completo (R$ 9,90)
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // Atualizar contador de consultas
+                updateConsultationCount();
+                
+            }, 3000);
+        }
+
+        function updateConsultationCount() {
+            const countElement = document.getElementById('consultasCount');
+            let currentCount = parseInt(countElement.textContent.replace('.', ''));
+            currentCount += Math.floor(Math.random() * 3) + 1;
+            countElement.textContent = currentCount.toLocaleString('pt-BR');
+        }
+
+        function shareAnswer() {
+            const answerText = document.querySelector('.answer-text').textContent;
+            const shareData = {
+                title: 'Minha Revelação no Amoreverso 🔮',
+                text: `Acabei de receber esta mensagem do universo: "${answerText.substring(0, 100)}..."`,
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData);
+            } else {
+                navigator.clipboard.writeText(`🔮 Amoreverso - Minha Revelação:\n\n"${answerText}"\n\nAcesse: ${window.location.href}`)
+                    .then(() => alert('Mensagem copiada! Cole e compartilhe com amigos.'));
+            }
+        }
+
+        function buyReport() {
+            const question = document.getElementById('userQuestion').value;
+            alert(`✨ Relatório Especial Gerado!\n\nPergunta: "${question}"\n\nRedirecionando para página de pagamento seguro...`);
+            // Aqui você integraria com o gateway de pagamento
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.querySelector('input').value;
+            
+            // Simular cadastro
+            form.innerHTML = `
+                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px;">
+                    <p style="margin: 0; font-weight: 600;">🎉 Email cadastrado com sucesso! Bênçãos a caminho...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                form.reset();
+                form.innerHTML = `
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Receber Bênçãos</button>
+                `;
+            }, 3000);
+        }
+
+        // ===== SCROLL SUAVE =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== ANIMAÇÃO DE ENTRADA =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar elementos para animação
+            const animateElements = document.querySelectorAll('.service-card, .blog-card');
+            
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
