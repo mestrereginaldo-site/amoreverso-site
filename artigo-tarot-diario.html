@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot do Dia: Mensagem dos Arcanos para Sua Jornada - Amoreverso</title>
+    <meta name="description" content="Leitura diária do tarot com interpretação personalizada. Descubra a mensagem que os arcanos têm para você hoje e como aplicar no seu dia a dia.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F59E0B;
+            --accent: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--light);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== CONTEÚDO DO ARTIGO ===== */
+        .article-hero {
+            padding: 140px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+        }
+
+        .article-category {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            padding: 4rem 0;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--secondary);
+        }
+
+        .article-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--light);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+        }
+
+        .highlight-box {
+            background: rgba(236, 72, 153, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--light);
+        }
+
+        .card-of-day {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .card-keywords {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .keyword {
+            background: rgba(245, 158, 11, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .ritual-steps {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: var(--accent);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-symbol {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .spread-example {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--darker);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2.2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                min-width: 100%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-of-day {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                padding: 2rem 0;
+            }
+
+            .article-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .card-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🔮</span>
+                <span class="logo-text">Amoreverso</span>
+            </a>
+            <nav class="nav">
+                <a href="../index.html#oraculo">Oráculo</a>
+                <a href="../index.html#servicos">Serviços</a>
+                <a href="../blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Artigo Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-category">Tarot & Oráculos</div>
+            <h1 class="article-title">Tarot do Dia: Mensagem dos Arcanos para Sua Jornada</h1>
+            <div class="article-meta">
+                <span>Por Mestre dos Arcanos</span>
+                <span>18 de Novembro de 2025</span>
+                <span>6 min de leitura</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo do Artigo -->
+    <article class="article-content">
+        <div class="container">
+            <p>Como mestre tarólogo há mais de 25 anos, aprendi que o tarot não é apenas um oráculo de previsão, mas um espelho da alma que reflete nossas verdades mais profundas. Cada carta que surge em uma leitura diária carrega mensagens específicas para nosso momento atual, oferecendo orientação, alertas e insights preciosos.</p>
+
+            <p>Neste artigo, vou compartilhar a mensagem do tarot para hoje e ensinar como você pode desenvolver sua própria prática diária de consulta aos arcanos. A sabedoria do tarot está disponível para todos - basta aprender a escutar sua voz sábia.</p>
+
+            <div class="highlight-box">
+                <p>"O tarot fala a linguagem da alma. Cada carta é um convite para olhar mais profundamente para dentro de si mesmo." - Mestre dos Arcanos</p>
+            </div>
+
+            <!-- Carta do Dia -->
+            <div class="card-of-day">
+                <div class="card-icon">🃏</div>
+                <h2 class="card-name">O Louco</h2>
+                <p><strong>Arcano Maior XIII - A Mensagem de Hoje</strong></p>
+                <div class="card-keywords">
+                    <span class="keyword">Novos Começos</span>
+                    <span class="keyword">Espontaneidade</span>
+                    <span class="keyword">Confiança</span>
+                    <span class="keyword">Aventura</span>
+                </div>
+                <p>O universo está sussurrando: "Dê o primeiro passo mesmo sem ver toda a escada."</p>
+            </div>
+
+            <h2>🎯 Interpretação Detalhada para Hoje</h2>
+            
+            <p><strong>O Louco</strong> aparece em nosso caminho trazendo a energia de novos começos e confiança no desconhecido. Esta carta não representa insensatez, mas sim a sabedoria de quem confia no processo da vida.</p>
+
+            <h3>O que Esta Carta Revela para Seu Dia:</h3>
+            <ul>
+                <li><strong>Oportunidades Inesperadas:</strong> Esteja aberto a convites e ideias que surgirem de forma espontânea</li>
+                <li>Coragem para Iniciar: Projetos adiados podem ganhar impulso hoje</li>
+                <li>Confiança no Processo: Nem tudo precisa estar planejado - a vida tem suas sincronicidades</li>
+                <li>Leveza e Alegria: Permita-se ser mais espontâneo e menos controlador</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Alerta do Tarot:</strong> Cuidado com a impulsividade. O Louco pede confiança, não imprudência. Ouça sua intuição antes de saltos muito arriscados.</p>
+            </div>
+
+            <h2>🔮 Como Aplicar Esta Mensagem no Seu Dia</h2>
+
+            <div class="ritual-steps">
+                <h3>Prática Diária com O Louco</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Manhã - Intenção de Abertura:</strong>
+                    <p>Ao acordar, repita: "Hoje estou aberto(a) às aventuras que o universo preparou para mim. Confio no meu caminho."</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Tarde - Ação Corajosa:</strong>
+                    <p>Faça algo pequeno que esteja fora da sua rotina. Pode ser um caminho diferente para o trabalho ou uma conversa com um desconhecido.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>Noite - Reflexão Gratidão:</strong>
+                    <p>Anote 3 momentos em que se sentiu vivo(a) e presente. Agradeça pela espontaneidade do dia.</p>
+                </div>
+            </div>
+
+            <h2>📖 Guia Rápido dos Arcanos Maiores</h2>
+
+            <p>Para entender melhor as mensagens do tarot, aqui está um resumo dos principais arcanos maiores:</p>
+
+            <div class="card-grid">
+                <div class="card-item">
+                    <div class="card-symbol">👑</div>
+                    <h4>O Mago</h4>
+                    <p>Manifestação, recursos, ação consciente. Use seus talentos.</p>
+                </div>
+                <div class="card-item">
+                    <div class="card-symbol">👁️</div>
+                    <h4>A Sacerdotisa</h4>
+                    <p>Intuição, mistério, sabedoria interior. Confie nos seus insights.</p>
+                </div>
+                <div class="card-item">
+                    <div class="card-symbol">👑</div>
+                    <h4>A Imperatriz</h4>
+                    <p>Fertilidade, criatividade, abundância. Nutra seus projetos.</p>
+                </div>
+                <div class="card-item">
+                    <div class="card-symbol">⚔️</div>
+                    <h4>O Imperador</h4>
+                    <p>Estrutura, autoridade, estabilidade. Estabeleça limites.</p>
+                </div>
+            </div>
+
+            <h2>💫 Criando Sua Prática Diária de Tarot</h2>
+
+            <p>Desenvolver uma relação consistente com o tarot transforma a prática em uma ferramenta poderosa de autoconhecimento. Segue um método que ensino há anos:</p>
+
+            <div class="ritual-steps">
+                <h3>Ritual Matinal de 5 Minutos</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Preparação (1 minuto):</strong>
+                    <p>Lave as mãos, acende uma vela ou incenso. Segure o baralho no coração.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Pergunta (30 segundos):</strong>
+                    <p>Formule: "Qual é a mensagem mais importante para meu dia hoje?"</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>Tiragem (1 minuto):</strong>
+                    <p>Embaralhe e tire uma carta. Observe sua primeira impressão.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <strong>Reflexão (2 minutos):</strong>
+                    <p>Como esta mensagem se relaciona com seus planos para o dia?</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <strong>Ação (30 segundos):</strong>
+                    <p>Defina uma pequena ação baseada na mensagem da carta.</p>
+                </div>
+            </div>
+
+            <h2>🎴 Tiragens Simples para Iniciantes</h2>
+
+            <p>Você não precisa ser um expert para se beneficiar do tarot. Aqui estão três tiragens simples que qualquer pessoa pode fazer:</p>
+
+            <div class="spread-example">
+                <h3>1. Tiragem do Sim/Não</h3>
+                <p><strong>Pergunta:</strong> Formule uma pergunta fechada</p>
+                <p><strong>Método:</strong> Tire uma carta. Arcanos maiores geralmente indicam "sim", menores dependem do naipe e número.</p>
+                <p><strong>Exemplo:</strong> O Enforcado (maior) = "Sim, mas requer paciência"</p>
+            </div>
+
+            <div class="spread-example">
+                <h3>2. Tiragem Passado-Presente-Futuro</h3>
+                <p><strong>Pergunta:</strong> "Qual a energia envolvida nesta situação?"</p>
+                <p><strong>Método:</strong> Três cartas da esquerda para direita</p>
+                <p><strong>Leitura:</strong> Passado influencia presente que molda futuro potencial</p>
+            </div>
+
+            <div class="spread-example">
+                <h3>3. Tiragem dos Desafios e Oportunidades</h3>
+                <p><strong>Pergunta:</strong> "O que preciso ver sobre esta situação?"</p>
+                <p><strong>Método:</strong> Duas cartas lado a lado</p>
+                <p><strong>Leitura:</strong> Esquerda = desafio, Direita = oportunidade/solução</p>
+            </div>
+
+            <h2>🌟 Dicas para Interpretação Pessoal</h2>
+
+            <p>A verdadeira magia do tarot acontece quando desenvolvemos nossa própria relação com as cartas. Aqui estão minhas densas favoritas:</p>
+
+            <div class="ritual-steps">
+                <ul>
+                    <li><strong>Confie na Primeira Impressão:</strong> Sua intuição inicial geralmente é a mais precisa</li>
+                    <li><strong>Observe as Cores e Símbolos:</strong> O que mais chama sua atenção na carta?</li>
+                    <li><strong>Conecte com Sua Vida:</strong> Como esta imagem se relaciona com sua situação atual?</li>
+                    <li><strong>Mantenha um Diário:</strong> Registre suas tiragens e insights</li>
+                    <li><strong>Estude Uma Carta por Vez:</strong> Aprofunde-se em um arcano por semana</li>
+                </ul>
+            </div>
+
+            <h2>⚠️ Armadilhas Comuns dos Iniciantes</h2>
+
+            <p>Após anos ensinando tarot, identifiquei os erros mais comuns que atrapalham o desenvolvimento:</p>
+
+            <div class="highlight-box">
+                <p><strong>Evite Estas Práticas:</strong></p>
+                <ul>
+                    <li>Consultar o tarot obsessivamente sobre a mesma questão</li>
+                    <li>Ignorar cartas "negativas" - todas têm mensagens importantes</li>
+                    <li>Buscar apenas previsões em vez de orientação</li>
+                    <li>Comparar suas leituras com as de outros</li>
+                    <li>Esquecer que você tem livre arbítrio sobre as mensagens</li>
+                </ul>
+            </div>
+
+            <h2>💎 Como Escolher Seu Primeiro Baralho</h2>
+
+            <p>A escolha do baralho é uma jornada pessoal. Aqui está meu guia para iniciantes:</p>
+
+            <div class="card-grid">
+                <div class="card-item">
+                    <div class="card-symbol"> Rider-Waite-Smith</div>
+                    <h4>Clássico</h4>
+                    <p>Ideal para aprender, símbolos padronizados, muita literatura disponível</p>
+                </div>
+                <div class="card-item">
+                    <div class="card-symbol">🔮</div>
+                    <h4>Intuitivo</h4>
+                    <p>Escolha aquele cujas imagens mais falam com seu coração</p>
+                </div>
+                <div class="card-item">
+                    <div class="card-symbol">🌙</div>
+                    <h4>Tema Pessoal</h4>
+                    <p>Baralhos com temas que ressoam com seus interesses pessoais</p>
+                </div>
+            </div>
+
+            <h2>📚 Recursos para Aprofundamento</h2>
+
+            <p>Para quem deseja se aprofundar no estudo do tarot, recomendo:</p>
+
+            <div class="ritual-steps">
+                <h3>Livros Essenciais</h3>
+                <ul>
+                    <li><strong>"O Tarot de Marseille" de Philippe Camoin:</strong> Para entender as origens</li>
+                    <li><strong>"78 Graus de Sabedoria" de Rachel Pollack:</strong> Bíblia do tarot moderno</li>
+                    <li><strong>"Tarot para o Autoconhecimento" de Gênese:</strong> Abordagem terapêutica</li>
+                </ul>
+
+                <h3>Práticas Recomendadas</h3>
+                <ul>
+                    <li>Meditação com cada arcano maior</li>
+                    <li>Estudo dos quatro elementos nos naipes</li>
+                    <li>Prática de leitura para amigos (com consentimento)</li>
+                    <li>Participação em grupos de estudo de tarot</li>
+                </ul>
+            </div>
+
+            <h2>🎉 Testemunhos de Transformação</h2>
+
+            <p>Alunos que desenvolveram a prática diária do tarot relatam:</p>
+
+            <div class="spread-example">
+                <p><strong>Claudia (29 anos):</strong> "O tarot me ajudou a tomar a decisão de mudar de carreira. A carta do Eremita apareceu repetidamente, me mostrando que precisava de tempo para reflexão."</p>
+            </div>
+
+            <div class="spread-example">
+                <p><strong>Ricardo (45 anos):</strong> "Minha prática matinal de 5 minutos com o tarot transformou minha forma de encarar os desafios. Hoje vejo oportunidades onde antes via apenas problemas."</p>
+            </div>
+
+            <div class="spread-example">
+                <p><strong>Beatriz (33 anos):</strong> "Aprendi a confiar mais na minha intuição através do tarot. As cartas me ensinaram que as respostas que busco já estão dentro de mim."</p>
+            </div>
+
+            <h2>🔮 Conclusão: Seu Diálogo com a Alma</h2>
+
+            <p>O tarot é muito mais que um simples jogo de cartas - é uma linguagem simbólica que nos conecta com nossa sabedoria interior. Quando praticado com respeito e consistência, torna-se um companheiro fiel na jornada do autoconhecimento.</p>
+
+            <div class="highlight-box">
+                <p>"O verdadeiro tarot não prediz o futuro - ele revela o presente com tal clareza que o futuro se torna uma criação consciente." - Mestre dos Arcanos</p>
+            </div>
+
+            <p>Comece hoje mesmo. Tire uma carta. Observe. Reflita. E lembre-se: a magia não está nas cartas, mas na relação que você constrói com elas.</p>
+
+            <h3>Próximos Passos Recomendados:</h3>
+            <ul>
+                <li>Compre ou escolha seu primeiro baralho</li>
+                <li>Pratique a tiragem de uma carta por dia</li>
+                <li>Mantenha um diário de tarot</li>
+                <li>Junte-se a nossa comunidade de estudos</li>
+            </ul>
+
+            <p style="text-align: center; margin-top: 3rem; font-style: italic; color: var(--secondary);">
+                Que suas cartas sempre revelem as verdades que sua alma precisa ouvir.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Quer Aprender Tarot Conosco?</h2>
+                <p>Receba lições semanais, tiragens comentadas e faça parte da nossa comunidade de estudos de tarot</p>
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Aprender Tarot</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">🔮</span>
+                        <span class="logo-text">Amoreverso</span>
+                    </div>
+                    <p>Seu portal de sabedoria esotérica e conexão espiritual.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <a href="../index.html#servicos">Consulta de Tarot</a>
+                    <a href="../index.html#servicos">Leitura de Runas</a>
+                    <a href="../index.html#servicos">Bola de Cristal</a>
+                    <a href="../index.html#servicos">Mapa Astral</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="../blog.html">Blog Esotérico</a>
+                    <a href="../index.html#faq">Perguntas Frequentes</a>
+                    <a href="../index.html#privacidade">Política de Privacidade</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>contato@amoreverso.com.br</p>
+                    <p>WhatsApp: (11) 99999-9999</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="TikTok">🎵</a>
+                        <a href="#" title="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amoreverso.com.br - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NEWSLETTER =====
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.querySelector('input').value;
+            
+            // Simular cadastro
+            form.innerHTML = `
+                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px; width: 100%;">
+                    <p style="margin: 0; font-weight: 600; color: white;">🎉 Email cadastrado! Primeira lição de tarot enviada para ${email}</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                form.reset();
+                form.innerHTML = `
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Aprender Tarot</button>
+                `;
+            }, 3000);
+        }
+
+        // ===== SCROLL SUAVE PARA TÍTULOS =====
+        document.querySelectorAll('h2, h3').forEach(heading => {
+            heading.style.scrollMarginTop = '100px';
+        });
+
+        // ===== ANIMAÇÃO DAS CARTAS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card-item');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
