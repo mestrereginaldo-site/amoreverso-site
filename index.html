@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amoreverso - Seu Oráculo Digital</title>
+    <title>Amoreverso - Seu Oráculo Digital e Portal Esotérico</title>
+    <meta name="description" content="Consultas esotéricas precisas através de IA. Tarot, runas, bola de cristal e muito mais. Descubra o que o universo reserva para você.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
 </head>
 <body>
     <!-- Header Fixo -->
@@ -19,7 +20,7 @@
             <nav class="nav">
                 <a href="#oraculo">Oráculo</a>
                 <a href="#servicos">Serviços</a>
-                <a href="#blog">Blog</a>
+                <a href="blog.html">Blog</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
             </nav>
@@ -64,7 +65,7 @@
                 <div class="input-group">
                     <textarea 
                         id="userQuestion" 
-                        placeholder="Digite sua pergunta... Ex: Como atrair prosperidade? Devo mudar de emprego?"
+                        placeholder="Digite sua pergunta... Ex: Como atrair prosperidade? Devo mudar de emprego? Meu amor está próximo?"
                         rows="4"
                     ></textarea>
                 </div>
@@ -94,7 +95,6 @@
             <h2 class="section-title">Nossos Serviços Esotéricos</h2>
             
             <div class="services-grid">
-                <!-- Serviço Gratuito -->
                 <div class="service-card">
                     <div class="service-icon">🔮</div>
                     <h3 class="service-title">Leitura Básica</h3>
@@ -107,7 +107,6 @@
                     <button class="service-button" onclick="scrollToOracle()">Usar Grátis</button>
                 </div>
                 
-                <!-- Serviço Premium -->
                 <div class="service-card premium">
                     <div class="service-badge">Mais Popular</div>
                     <div class="service-icon">💎</div>
@@ -119,10 +118,9 @@
                         <li>Previsão para 30 dias</li>
                         <li>Ritual personalizado</li>
                     </ul>
-                    <button class="service-button premium-btn">Comprar Agora</button>
+                    <button class="service-button premium-btn" onclick="buyReport()">Comprar Agora</button>
                 </div>
                 
-                <!-- Serviço VIP -->
                 <div class="service-card vip">
                     <div class="service-icon">👁️</div>
                     <h3 class="service-title">Consulta com Especialista</h3>
@@ -139,57 +137,58 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Blog Preview Section -->
     <section id="blog" class="blog-section">
         <div class="container">
             <h2 class="section-title">Blog Esotérico</h2>
             <p class="section-subtitle">Sabedoria ancestral para sua jornada espiritual</p>
             
             <div class="blog-grid">
-                <!-- Artigo 1 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Amor</div>
                     </div>
                     <div class="blog-content">
                         <h3>Os 7 Sinais de que o Amor Verdadeiro Está Chegando</h3>
-                        <p>O amor verdadeiro muitas vezes chega de forma sutil, mas existem sinais claros que podem indicar sua proximidade. Neste artigo, exploramos os sete sinais mais comuns que apontam para a chegada de um amor significativo. Desde sonhos premonitórios até encontros sincronísticos, você aprenderá a identificar essas pistas e se preparar para receber o amor que merece. Abordamos também como trabalhar sua energia para atrair relacionamentos saudáveis e duradouros.</p>
+                        <p>Descubra os sinais universais que indicam a chegada do amor verdadeiro em sua vida e como preparar sua energia para recebê-lo. Aprenda a identificar sincronicidades e sinais do universo.</p>
                         <div class="blog-meta">
                             <span>21 Nov 2025</span>
-                            <a href="#" class="read-more">Ler mais →</a>
+                            <a href="artigos/artigo-amor-verdadeiro.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
                 
-                <!-- Artigo 2 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Lua</div>
                     </div>
                     <div class="blog-content">
                         <h3>Lua Nova em Sagitário: Ritual de Expansão</h3>
-                        <p>A lua nova em Sagitário é um período poderoso para abrir novos horizontes. Neste guia completo, você aprenderá a realizar um ritual de expansão para atrair novas oportunidades de viagem, estudo e crescimento pessoal. Incluímos passo a passo do ritual, os materiais necessários e como manter a energia de Sagitário ao longo do ciclo lunar. Aproveite esta energia para dar o primeiro passo em direção aos seus sonhos mais ousados.</p>
+                        <p>Aproveite a energia da lua nova para abrir novos caminhos e oportunidades. Ritual completo com passo a passo para atrair expansão em todas as áreas da sua vida.</p>
                         <div class="blog-meta">
                             <span>19 Nov 2025</span>
-                            <a href="#" class="read-more">Ler mais →</a>
+                            <a href="artigos/artigo-lua-sagitario.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
                 
-                <!-- Artigo 3 -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Tarot</div>
                     </div>
                     <div class="blog-content">
                         <h3>Tarot do Dia: Mensagem dos Arcanos</h3>
-                        <p>Comece seu dia com a sabedoria do tarot. Nesta leitura diária, trazemos a mensagem dos arcanos maiores para orientar suas decisões e energias. Hoje, a carta sorteada foi a Força, indicando que a gentileza e a paciência serão suas maiores aliadas. Aprenda a interpretar as cartas do tarot e como aplicar seus ensinamentos no cotidiano. Incluímos também um exercício de meditação para conectar-se com a energia da carta.</p>
+                        <p>Leitura diária gratuita do tarot com interpretação personalizada para seu signo e energia atual. Descubra a mensagem que os arcanos têm para você hoje.</p>
                         <div class="blog-meta">
                             <span>18 Nov 2025</span>
-                            <a href="#" class="read-more">Ler mais →</a>
+                            <a href="artigos/artigo-tarot-diario.html" class="read-more">Ler Artigo Completo →</a>
                         </div>
                     </div>
                 </article>
+            </div>
+            
+            <div class="blog-cta">
+                <a href="blog.html" class="cta-button secondary">Ver Todos os Artigos</a>
             </div>
         </div>
     </section>
@@ -222,17 +221,17 @@
                 
                 <div class="footer-section">
                     <h4>Serviços</h4>
-                    <a href="#">Consulta de Tarot</a>
-                    <a href="#">Leitura de Runas</a>
-                    <a href="#">Bola de Cristal</a>
-                    <a href="#">Mapa Astral</a>
+                    <a href="#servicos">Consulta de Tarot</a>
+                    <a href="#servicos">Leitura de Runas</a>
+                    <a href="#servicos">Bola de Cristal</a>
+                    <a href="#servicos">Mapa Astral</a>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Links Úteis</h4>
-                    <a href="#">Blog Esotérico</a>
-                    <a href="#">Perguntas Frequentes</a>
-                    <a href="#">Política de Privacidade</a>
+                    <a href="blog.html">Blog Esotérico</a>
+                    <a href="#faq">Perguntas Frequentes</a>
+                    <a href="#privacidade">Política de Privacidade</a>
                 </div>
                 
                 <div class="footer-section">
@@ -240,9 +239,9 @@
                     <p>contato@amoreverso.com.br</p>
                     <p>WhatsApp: (11) 99999-9999</p>
                     <div class="social-links">
-                        <a href="#">Instagram</a>
-                        <a href="#">TikTok</a>
-                        <a href="#">YouTube</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="TikTok">🎵</a>
+                        <a href="#" title="YouTube">▶️</a>
                     </div>
                 </div>
             </div>
