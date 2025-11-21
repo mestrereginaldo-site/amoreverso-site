@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Nova em Sagitário: Ritual de Expansão para Dezembro 2025 - Amoreverso</title>
+    <meta name="description" content="Aproveite a energia da Lua Nova em Sagitário para expansão e novos horizontes. Ritual completo com passo a passo para atrair oportunidades.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        /* ===== RESET E CONFIGURAÇÕES GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F59E0B;
+            --accent: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--light);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== CONTEÚDO DO ARTIGO ===== */
+        .article-hero {
+            padding: 140px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #7C3AED 0%, #F59E0B 100%);
+        }
+
+        .article-category {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            padding: 4rem 0;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--secondary);
+        }
+
+        .article-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--light);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+        }
+
+        .highlight-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--light);
+        }
+
+        .ritual-steps {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: var(--secondary);
+            color: var(--darker);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .crystal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .crystal-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .crystal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .zodiac-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .zodiac-table th {
+            background: rgba(139, 92, 246, 0.3);
+            padding: 1rem;
+            text-align: left;
+            color: var(--light);
+            font-weight: 600;
+        }
+
+        .zodiac-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        .zodiac-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--darker);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2.2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                min-width: 100%;
+            }
+
+            .crystal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                padding: 2rem 0;
+            }
+
+            .article-content h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🔮</span>
+                <span class="logo-text">Amoreverso</span>
+            </a>
+            <nav class="nav">
+                <a href="../index.html#oraculo">Oráculo</a>
+                <a href="../index.html#servicos">Serviços</a>
+                <a href="../blog.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Artigo Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-category">Astrologia & Lua</div>
+            <h1 class="article-title">Lua Nova em Sagitário: Ritual de Expansão para Dezembro 2025</h1>
+            <div class="article-meta">
+                <span>Por Sacerdotisa Luna</span>
+                <span>19 de Novembro de 2025</span>
+                <span>8 min de leitura</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo do Artigo -->
+    <article class="article-content">
+        <div class="container">
+            <p>A Lua Nova de Dezembro de 2025 em Sagitário chega como um farol de esperança e expansão, trazendo oportunidades únicas para ampliar nossos horizontes em todas as áreas da vida. Como astróloga e sacerdotisa há mais de 15 anos, testemunhei o poder transformador desta configuração astrológica que nos convida a sonhar grande e agir com coragem.</p>
+
+            <p>Sagitário, regido por Júpiter, o planeta da expansão e da sorte, combina perfeitamente com a energia de renovação da Lua Nova. Este é um momento propício para planejar viagens, iniciar estudos superiores, expandir negócios ou simplesmente abrir a mente para novas possibilidades.</p>
+
+            <div class="highlight-box">
+                <p>"A Lua Nova em Sagitário é o convite do universo para que você ouse voar mais alto. É o momento de traçar mapas para territórios desconhecidos da alma." - Sacerdotisa Luna</p>
+            </div>
+
+            <h2>🏹 A Energia de Sagitário: O Arquétipo do Aventureiro</h2>
+            
+            <p>Sagitário é o signo do fogo mutável, representado pelo centauro que mira suas flechas em direção às estrelas. Esta energia nos impulsiona para:</p>
+
+            <ul>
+                <li><strong>Exploração:</strong> Busca por novos conhecimentos e experiências</li>
+                <li><strong>Otimismo:</strong> Visão positiva sobre o futuro</li>
+                <li><strong>Liberdade:</strong> Necessidade de espaço para crescer</li>
+                <li><strong>Verdade:</strong> Busca por significado e propósito</li>
+                <li><strong>Aventura:</strong> Coragem para enfrentar o desconhecido</li>
+            </ul>
+
+            <h3>Como Esta Lua Nova Afeta Seu Signo Solar</h3>
+
+            <table class="zodiac-table">
+                <thead>
+                    <tr>
+                        <th>Signo</th>
+                        <th>Área de Expansão</th>
+                        <th>Oportunidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Áries</strong></td>
+                        <td>Filosofia e estudos</td>
+                        <td>Viagens internacionais, cursos superiores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Touro</strong></td>
+                        <td>Transformação íntima</td>
+                        <td>Crescimento espiritual, heranças</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gêmeos</strong></td>
+                        <td>Parcerias e relacionamentos</td>
+                        <td>Sociedades prosperas, casamento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Câncer</strong></td>
+                        <td>Saúde e trabalho</td>
+                        <td>Novos hábitos, oportunidades profissionais</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Leão</strong></td>
+                        <td>Criatividade e romance</td>
+                        <td>Projetos artísticos, novos amores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Virgem</strong></td>
+                        <td>Lar e família</td>
+                        <td>Mudanças positivas, base segura</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Libra</strong></td>
+                        <td>Comunicação e irmandade</td>
+                        <td>Networking, cursos, viagens curtas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escorpião</strong></td>
+                        <td>Recursos e valores</td>
+                        <td>Aumento de renda, investimentos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sagitário</strong></td>
+                        <td>Identidade e personalidade</td>
+                        <td>Reinvenção pessoal, novos começos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capricórnio</strong></td>
+                        <td>Espiritualidade e intuição</td>
+                        <td>Despertar espiritual, insights</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aquário</strong></td>
+                        <td>Amizades e grupos</td>
+                        <td>Novas amizades, projetos coletivos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peixes</strong></td>
+                        <td>Carreira e reputação</td>
+                        <td>Reconhecimento profissional, promoções</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>🔮 Ritual da Lua Nova em Sagitário: Expansão em 4 Direções</h2>
+
+            <p>Este ritual foi canalizado durante minhas meditações e testado por nossa comunidade com resultados extraordinários. Realize-o no dia exato da Lua Nova (05 de Dezembro de 2025) ou até três dias depois.</p>
+
+            <div class="ritual-steps">
+                <h3>Materiais Necessários:</h3>
+                <ul>
+                    <li>1 vela laranja ou roxa</li>
+                    <li>Incenso de sálvia ou lavanda</li>
+                    <li>Papel e caneta azul</li>
+                    <li>1 cristal de citrino ou aventurina</li>
+                    <li>1 moeda de qualquer valor</li>
+                    <li>Óleo essencial de laranja ou bergamota</li>
+                </ul>
+            </div>
+
+            <div class="ritual-steps">
+                <h3>Preparação do Espaço Sagrado</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Limpeza Energética:</strong>
+                    <p>Comece limpando o espaço com o incenso. Passe pela sala no sentido horário, visualizando todas as energias estagnadas sendo dissipadas.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Círculo de Proteção:</strong>
+                    <p>Visualize um círculo de luz dourada ao seu redor. Diga: "Protejo este espaço com a luz sagrada de Sagitário."</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>Elementos da Natureza:</strong>
+                    <p>Posicione-se voltado para o Leste (elemento Ar de Sagitário). Se possível, tenha uma janela aberta.</p>
+                </div>
+            </div>
+
+            <h3>💎 Cristais para Potencializar o Ritual</h3>
+
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <div class="crystal-icon">💛</div>
+                    <h4>Citrino</h4>
+                    <p>Prosperidade e abundância. Atrai oportunidades de crescimento.</p>
+                </div>
+                <div class="crystal-card">
+                    <div class="crystal-icon">💚</div>
+                    <h4>Aventurina</h4>
+                    <p>Expansão e sorte. Ideal para novos começos.</p>
+                </div>
+                <div class="crystal-card">
+                    <div class="crystal-icon">💜</div>
+                    <h4>Sodalita</h4>
+                    <p>Sabedoria e verdade. Ajuda na clareza mental.</p>
+                </div>
+                <div class="crystal-card">
+                    <div class="crystal-icon">🧡</div>
+                    <h4>Olho de Tigre</h4>
+                    <p>Coragem e proteção. Para enfrentar novos desafios.</p>
+                </div>
+            </div>
+
+            <div class="ritual-steps">
+                <h3>O Ritual das 4 Direções de Expansão</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>Norte - Expansão Material:</strong>
+                    <p>Segure a moeda na mão esquerda. Visualize abundância fluindo para sua vida. Escreva no papel: "Aceito a prosperidade em todas as suas formas."</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>Leste - Expansão Mental:</strong>
+                    <p>Acenda a vela. Visualize sua mente se expandindo como o universo. Escreva: "Minha mente está aberta a novos conhecimentos e sabedoria."</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>Sul - Expansão Emocional:</strong>
+                    <p>Coloque as mãos sobre o coração. Sinta o amor se expandindo. Escreva: "Meu coração se expande para dar e receber amor ilimitado."</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <strong>Oeste - Expansão Espiritual:</strong>
+                    <p>Segure o cristal. Visualize sua conexão com o divino. Escreva: "Minha espiritualidade se expande além dos limites conhecidos."</p>
+                </div>
+            </div>
+
+            <h2>📝 A Carta de Intenções de Sagitário</h2>
+
+            <p>A chave deste ritual está na formulação correta das intenções. Diferente de outras Luas Novas, em Sagitário devemos ser ousados em nossos pedidos:</p>
+
+            <div class="highlight-box">
+                <p><strong>Formulação Correta:</strong> "Eu [seu nome] aceito e recebo [desejo específico] de forma ampla, abundante e para o maior bem de todos."</p>
+            </div>
+
+            <h3>Exemplos de Intenções Poderosas:</h3>
+            <ul>
+                <li>"Eu aceito e recebo oportunidades de viagens internacionais que expandam minha consciência"</li>
+                <li>"Eu aceito e recebo mentores e professores que acelerem meu crescimento espiritual"</li>
+                <li>"Eu aceito e recebo expansão financeira através de negócios inovadores"</li>
+                <li>"Eu aceito e recebo relacionamentos que respeitem minha liberdade e me inspirem a crescer"</li>
+            </ul>
+
+            <h2>🌌 Alinhamento com as Estrelas: Astrologia Avançada</h2>
+
+            <p>Esta Lua Nova traz aspectos astrológicos excepcionais que potencializam nosso ritual:</p>
+
+            <div class="ritual-steps">
+                <h3>Aspectos Principais - 05/12/2025</h3>
+                <ul>
+                    <li><strong>Lua Nova a 13° de Sagitário:</strong> Grau de aventura e exploração</li>
+                    <li><strong>Conjunção com Mercúrio:</strong> Comunicação expandida, ideias brilhantes</li>
+                    <li><strong>Trígono com Urano:</strong> Mudanças súbitas e positivas</li>
+                    <li><strong>Sextil com Netuno:</strong> Intuição aguçada, sonhos proféticos</li>
+                    <li><strong>Quincúncio com Saturno:</strong> Ajustes necessários para o crescimento</li>
+                </ul>
+            </div>
+
+            <h2>🕯️ Manutenção da Energia: Práticas Diárias</h2>
+
+            <p>Para manter a energia de expansão funcionando nos próximos 28 dias, pratique:</p>
+
+            <div class="ritual-steps">
+                <div class="step">
+                    <span class="step-number">🌅</span>
+                    <strong>Manhãs:</strong>
+                    <p>5 minutos de visualização do seu desejo já realizado. Sinta a emoção como se já tivesse acontecido.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">🌇</span>
+                    <strong>Tardes:</strong>
+                    <p>Uma ação concreta que alinhe com sua intenção. Mesmo que pequena, demonstra comprometimento.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">🌃</span>
+                    <strong>Noites:</strong>
+                    <p>Anote 3 coisas que aconteceram durante o dia que mostram sinais de expansão.</p>
+                </div>
+            </div>
+
+            <h2>⚠️ Armadilhas a Evitar Durante Esta Lua Nova</h2>
+
+            <p>A energia de Sagitário, quando mal direcionada, pode levar a:</p>
+
+            <ul>
+                <li><strong>Otimismo excessivo:</strong> Acreditar que tudo virá sem esforço</li>
+                <li><strong>Dispersão:</strong> Começar muitos projetos sem concluir nenhum</li>
+                <li><strong>Dogmatismo:</strong> Achar que sua verdade é a única válida</li>
+                <li><strong>Impulsividade:</strong> Tomar decisões importantes sem reflexão</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p>"A expansão verdadeira vem do equilíbrio entre ousadia e sabedoria, entre voar alto e manter os pés no chão." - Sacerdotisa Luna</p>
+            </div>
+
+            <h2>🔭 Testemunhos da Comunidade</h2>
+
+            <p>Na Lua Nova de Sagitário do ano passado, membros de nossa comunidade relataram:</p>
+
+            <div class="ritual-steps">
+                <ul>
+                    <li><strong>Maria (32 anos):</strong> "Consegui a aprovação para meu mestrado no exterior 2 semanas após o ritual"</li>
+                    <li><strong>Carlos (41 anos):</strong> "Minha empresa recebeu um investimento que triplicou nossa capacidade"</li>
+                    <li><strong>Ana (28 anos):</strong> "Conheci meu atual marido em uma viagem que quase não fiz"</li>
+                    <li><strong>Roberto (50 anos):</strong> "Fui promovido para uma posição internacional que nem sabia que existia"</li>
+                </ul>
+            </div>
+
+            <h2>💫 Conclusão: Seu Convite para a Expansão</h2>
+
+            <p>A Lua Nova em Sagitário de Dezembro de 2025 é um portal cósmico que se abre para todos que desejam ampliar seus horizontes. Esta energia não discrimina - está disponível para quem ousa pedir e agir.</p>
+
+            <p>Lembre-se: o universo sempre diz "sim" para nossas intenções, mas ele responde de acordo com a clareza e intensidade com que pedimos. Sagitário nos ensina que os limites existem apenas em nossas mentes.</p>
+
+            <div class="highlight-box">
+                <p>"Você não precisa saber como o milagre virá. Apenas saiba que ele virá. Sua função é abrir espaço e dizer sim."</p>
+            </div>
+
+            <h3>Próximos Passos Recomendados:</h3>
+            <ul>
+                <li>Realize o ritual na data correta</li>
+                <li>Compartilhe suas intenções com alguém de confiança</li>
+                <li>Esteja aberto a sinais e sincronicidades</li>
+                <li>Comemore cada pequena expansão</li>
+            </ul>
+
+            <p style="text-align: center; margin-top: 3rem; font-style: italic; color: var(--secondary);">
+                Que suas flechas atinjam as estrelas que seu coração sempre desejou alcançar.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Quer Aprender Mais Sobre Astrologia?</h2>
+                <p>Receba calendários lunares exclusivos, interpretações astrológicas personalizadas e rituais para cada fase da lua</p>
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Aprofundar na Astrologia</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">🔮</span>
+                        <span class="logo-text">Amoreverso</span>
+                    </div>
+                    <p>Seu portal de sabedoria esotérica e conexão espiritual.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <a href="../index.html#servicos">Consulta de Tarot</a>
+                    <a href="../index.html#servicos">Leitura de Runas</a>
+                    <a href="../index.html#servicos">Bola de Cristal</a>
+                    <a href="../index.html#servicos">Mapa Astral</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="../blog.html">Blog Esotérico</a>
+                    <a href="../index.html#faq">Perguntas Frequentes</a>
+                    <a href="../index.html#privacidade">Política de Privacidade</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>contato@amoreverso.com.br</p>
+                    <p>WhatsApp: (11) 99999-9999</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="TikTok">🎵</a>
+                        <a href="#" title="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Amoreverso.com.br - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NEWSLETTER =====
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.querySelector('input').value;
+            
+            // Simular cadastro
+            form.innerHTML = `
+                <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px; width: 100%;">
+                    <p style="margin: 0; font-weight: 600; color: white;">🎉 Email cadastrado! Calendário lunar enviado para ${email}</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                form.reset();
+                form.innerHTML = `
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Quero Aprofundar na Astrologia</button>
+                `;
+            }, 3000);
+        }
+
+        // ===== SCROLL SUAVE PARA TÍTULOS =====
+        document.querySelectorAll('h2, h3').forEach(heading => {
+            heading.style.scrollMarginTop = '100px';
+        });
+    </script>
+</body>
+</html>
