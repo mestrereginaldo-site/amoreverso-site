@@ -188,36 +188,108 @@
             font-size: 0.9rem;
         }
 
-        /* ===== BOLA DE CRISTAL ===== */
+        /* ===== ANIMAÇÃO DE CARTAS DE TAROT ===== */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            height: 500px;
         }
 
-        .crystal-ball {
+        .tarot-cards {
+            position: relative;
             width: 400px;
-            height: 400px;
-            position: relative;
+            height: 500px;
         }
 
-        .crystal-inner {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, 
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(224, 247, 250, 0.6) 30%,
-                rgba(139, 92, 246, 0.3) 70%);
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                inset 0 0 100px rgba(255, 255, 255, 0.6),
-                0 0 80px rgba(139, 92, 246, 0.4);
-            animation: float 6s ease-in-out infinite;
+        .tarot-card {
+            position: absolute;
+            width: 200px;
+            height: 320px;
+            background: linear-gradient(145deg, #8B5CF6, #7C3AED);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            transition: all 0.5s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-        .crystal-glow {
+        .tarot-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .card-top, .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .card-1 {
+            top: 0;
+            left: 0;
+            transform: rotate(-10deg);
+            background: linear-gradient(145deg, #EC4899, #8B5CF6);
+            z-index: 3;
+            animation: float-card-1 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            top: 40px;
+            left: 120px;
+            transform: rotate(5deg);
+            background: linear-gradient(145deg, #F59E0B, #EC4899);
+            z-index: 2;
+            animation: float-card-2 7s ease-in-out infinite;
+        }
+
+        .card-3 {
+            top: 80px;
+            left: 240px;
+            transform: rotate(15deg);
+            background: linear-gradient(145deg, #8B5CF6, #F59E0B);
+            z-index: 1;
+            animation: float-card-3 8s ease-in-out infinite;
+        }
+
+        @keyframes float-card-1 {
+            0%, 100% { transform: rotate(-10deg) translateY(0px); }
+            50% { transform: rotate(-12deg) translateY(-20px); }
+        }
+
+        @keyframes float-card-2 {
+            0%, 100% { transform: rotate(5deg) translateY(0px); }
+            50% { transform: rotate(3deg) translateY(-25px); }
+        }
+
+        @keyframes float-card-3 {
+            0%, 100% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(17deg) translateY(-15px); }
+        }
+
+        .tarot-glow {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -229,11 +301,7 @@
                 transparent 70%);
             border-radius: 50%;
             animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            z-index: 0;
         }
 
         @keyframes pulse {
@@ -927,9 +995,22 @@
                 transform: rotate(45deg) translate(-5px, -6px);
             }
             
-            .crystal-ball {
-                width: 280px;
-                height: 280px;
+            .tarot-cards {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .tarot-card {
+                width: 150px;
+                height: 240px;
+            }
+            
+            .card-2 {
+                left: 90px;
+            }
+            
+            .card-3 {
+                left: 180px;
             }
             
             .oracle-options {
@@ -992,9 +1073,22 @@
                 font-size: 2rem;
             }
             
-            .crystal-ball {
+            .tarot-cards {
                 width: 250px;
-                height: 250px;
+                height: 350px;
+            }
+            
+            .tarot-card {
+                width: 120px;
+                height: 190px;
+            }
+            
+            .card-2 {
+                left: 75px;
+            }
+            
+            .card-3 {
+                left: 150px;
             }
             
             .hero-stats {
@@ -1060,9 +1154,47 @@
             </div>
             
             <div class="hero-visual">
-                <div class="crystal-ball">
-                    <div class="crystal-inner"></div>
-                    <div class="crystal-glow"></div>
+                <div class="tarot-cards">
+                    <div class="tarot-card card-1">
+                        <div class="card-top">
+                            <span>I</span>
+                            <span>🃏</span>
+                        </div>
+                        <div class="card-center">
+                            🌙
+                        </div>
+                        <div class="card-bottom">
+                            <span>🃏</span>
+                            <span>I</span>
+                        </div>
+                    </div>
+                    <div class="tarot-card card-2">
+                        <div class="card-top">
+                            <span>VII</span>
+                            <span>✨</span>
+                        </div>
+                        <div class="card-center">
+                            ⭐
+                        </div>
+                        <div class="card-bottom">
+                            <span>✨</span>
+                            <span>VII</span>
+                        </div>
+                    </div>
+                    <div class="tarot-card card-3">
+                        <div class="card-top">
+                            <span>XII</span>
+                            <span>💫</span>
+                        </div>
+                        <div class="card-center">
+                            🔮
+                        </div>
+                        <div class="card-bottom">
+                            <span>💫</span>
+                            <span>XII</span>
+                        </div>
+                    </div>
+                    <div class="tarot-glow"></div>
                 </div>
             </div>
         </div>
@@ -1159,7 +1291,7 @@
             <p class="section-subtitle">Sabedoria ancestral para sua jornada espiritual</p>
             
             <div class="blog-grid">
-                <!-- Artigo 1 -->
+                <!-- Artigo 1 - Amor Verdadeiro -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Amor</div>
@@ -1174,7 +1306,7 @@
                     </div>
                 </article>
                 
-                <!-- Artigo 2 -->
+                <!-- Artigo 2 - Lua Sagitário -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Lua</div>
@@ -1189,7 +1321,7 @@
                     </div>
                 </article>
                 
-                <!-- Artigo 3 -->
+                <!-- Artigo 3 - Tarot Diário -->
                 <article class="blog-card">
                     <div class="blog-image">
                         <div class="blog-category">Tarot</div>
@@ -1452,7 +1584,57 @@
                 <br>• <strong>Responsabilidade</strong>: Suas ações passadas estão influenciando o presente
 
                 <br><br><strong>Conselho Prático:</strong>
-                Mantenha integridade em todas as suas decisões. A Justiça garante que cada ação terá sua consequência correspondente.`
+                Mantenha integridade em todas as suas decisões. A Justiça garante que cada ação terá sua consequência correspondente.`,
+
+                `🔥 <strong>O Mago</strong> surge com seu poder de manifestação. Esta carta representa habilidades, recursos e o poder de transformar ideias em realidade.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Manifestação</strong>: Você tem todos os recursos necessários para realizar seus desejos
+                <br>• <strong>Habilidade</strong>: Suas capacidades são maiores do que você imagina
+                <br>• <strong>Oportunidade</strong>: Novas portas se abrirão para você
+
+                <br><br><strong>Conselho Prático:</strong>
+                Use suas habilidades de forma consciente. O Mago lembra que você é o criador de sua realidade.`,
+
+                `💖 <strong>Os Enamorados</strong> trazem escolhas importantes relacionadas ao amor e relacionamentos. Esta carta representa união, harmonia e decisões do coração.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Escolhas</strong>: Você enfrentará decisões importantes no amor
+                <br>• <strong>Harmonia</strong>: Relacionamentos existentes se fortalecerão
+                <br>• <strong>Alianças</strong>: Novas parcerias significativas surgirão
+
+                <br><br><strong>Conselho Prático:</strong>
+                Siga seu coração, mas mantenha o equilíbrio com a razão. Os Enamorados pedem autenticidade em suas escolhas.`,
+
+                `🔄 <strong>A Roda da Fortuna</strong> indica mudanças cíclicas e sorte. Esta carta representa ciclos, destino e momentos de virada.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Ciclos</strong>: Um ciclo está terminando e outro começando
+                <br>• <strong>Sorte</strong>: Momentos favoráveis estão a caminho
+                <br>• <strong>Destino</strong>: O universo está alinhando coisas a seu favor
+
+                <br><br><strong>Conselho Prático:</strong>
+                Aproveite as oportunidades que surgirem. A Roda da Fortuna lembra que tudo na vida é cíclico.`,
+
+                `🦁 <strong>A Força</strong> revela coragem interior e determinação. Esta carta representa força emocional, paciência e controle sobre impulsos.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Coragem</strong>: Você tem força interior para superar desafios
+                <br>• <strong>Paciência</strong>: Resultados virão no tempo certo
+                <br>• <strong>Autocontrole</strong>: Sua sabedoria emocional será testada
+
+                <br><br><strong>Conselho Prático:</strong>
+                Use a gentileza onde a força não funciona. A Força ensina que a verdadeira coragem vem da compaixão.`,
+
+                `🌙 <strong>A Lua</strong> traz intuição e revelações do subconsciente. Esta carta representa sonhos, intuição e aspectos ocultos.
+
+                <br><br><strong>Interpretação Detalhada:</strong>
+                <br>• <strong>Intuição</strong>: Sua voz interior tem mensagens importantes
+                <br>• <strong>Revelações</strong>: Verdades ocultas virão à tona
+                <br>• <strong>Criatividade</strong>: Seu lado artístico será estimulado
+
+                <br><br><strong>Conselho Prático:</strong>
+                Confie em seus instintos e preste atenção aos seus sonhos. A Lua revela o que está além da superfície.`
             ],
 
             runas: [
@@ -1467,7 +1649,7 @@
                 <br>• Energia de manifestação poderosa
 
                 <br><br><strong>Atenção:</strong>
-                Fehu lembra que a verdadeira riqueza está na capacidade de compartilhar e circular energia. Evite a ganância.`,
+                Fehu lembra que a verdadeira riqueza está na capacidade de compartilhar e circular energia.`,
 
                 `ᚢ <strong>Uruz</strong> - Força primal, saúde e transformação radical.
 
@@ -1480,7 +1662,20 @@
                 <br>• Início de transformações significativas
 
                 <br><br><strong>Atenção:</strong>
-                Use esta força com sabedoria. Transformações profundas exigem coragem e podem ser intensas.`
+                Use esta força com sabedoria. Transformações profundas exigem coragem e podem ser intensas.`,
+
+                `ᚦ <strong>Thurisaz</strong> - Proteção e decisões importantes.
+
+                <br><br><strong>Significado Profundo:</strong>
+                Thurisaz é a runa do martelo de Thor, representando proteção divina e a necessidade de tomar decisões corajosas.
+
+                <br><br><strong>Aspectos Positivos:</strong>
+                <br>• Proteção contra energias negativas
+                <br>• Clareza para decisões difíceis
+                <br>• Quebra de padrões limitantes
+
+                <br><br><strong>Atenção:</strong>
+                Esta runa pede ação decisiva, mas com consciência das consequências.`
             ],
 
             cristal: [
@@ -1508,7 +1703,46 @@
                 <br>• Amizades evoluem para conexões mais profundas
 
                 <br><br><strong>Orientações:</strong>
-                Trabalhe o amor próprio como base para atrair relacionamentos saudáveis.`
+                Trabalhe o amor próprio como base para atrair relacionamentos saudáveis.`,
+
+                `✨ <strong>Visão da Bola de Cristal:</strong> Portais de oportunidade se abrem.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                A energia atual favorece novos começos e expansão. O universo está conspirando a seu favor de maneiras que você nem imagina.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Oportunidades profissionais surgirão inesperadamente
+                <br>• Viagens ou mudanças trarão crescimento
+                <br>• Seus talentos serão reconhecidos
+
+                <br><br><strong>Orientações:</strong>
+                Esteja aberto ao novo e confie nos sinais que receber.`,
+
+                `🌟 <strong>Visão da Bola de Cristal:</strong> Transformação espiritual em andamento.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                Seu espírito está passando por um processo de purificação e elevação. Novos níveis de consciência estão se abrindo para você.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Despertar de dons intuitivos e psíquicos
+                <br>• Encontros com mestres espirituais (encarnados ou não)
+                <br>• Missão de vida se tornando mais clara
+
+                <br><br><strong>Orientações:</strong>
+                Medite regularmente e registre seus sonhos. Sua jornada espiritual está acelerando.`,
+
+                `💎 <strong>Visão da Bola de Cristal:</strong> Prosperidade material e espiritual.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                A abundância está fluindo em sua direção de múltiplas formas. O universo está respondendo aos seus pedidos de maneira amplificada.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Oportunidades financeiras inesperadas
+                <br>• Reconhecimento por seu trabalho e talentos
+                <br>• Expansão em todas as áreas da vida
+
+                <br><br><strong>Orientações:</strong>
+                Mantenha uma mentalidade de gratidão e esteja aberto a receber.`
             ],
 
             numerologia: [
@@ -1536,7 +1770,33 @@
                 <br>• Atração de oportunidades sociais
 
                 <br><br><strong>Aplicação Prática:</strong>
-                Compartilhe seus talentos com o mundo. Sua expressão autêntica atrará reconhecimento e novas oportunidades.`
+                Compartilhe seus talentos com o mundo. Sua expressão autêntica atrará reconhecimento e novas oportunidades.`,
+
+                `9️⃣ <strong>Número 9</strong> - Conclusões e novos ciclos.
+
+                <br><br><strong>Vibração Energética:</strong>
+                O 9 representa completude, sabedoria universal e o fechamento de ciclos.
+
+                <br><br><strong>Influências:</strong>
+                <br>• Finalização de projetos importantes
+                <br>• Compaixão e entendimento ampliados
+                <br>• Preparação para novos começos
+
+                <br><br><strong>Aplicação Prática:</strong>
+                Liberte o que já cumpriu seu propósito. O número 9 prepara o terreno para reinícios abençoados.`,
+
+                `1️⃣ <strong>Número 1</strong> - Novos começos e liderança.
+
+                <br><br><strong>Vibração Energética:</strong>
+                O 1 representa iniciativa, independência e a semente de novos projetos.
+
+                <br><br><strong>Influências:</strong>
+                <br>• Início de ciclos importantes
+                <br>• Oportunidades para assumir liderança
+                <br>• Manifestação de ideias originais
+
+                <br><br><strong>Aplicação Prática:</strong>
+                Tome a iniciativa em projetos que estão no seu coração. O número 1 traz a energia do pioneiro.`
             ]
         };
 
@@ -1547,6 +1807,14 @@
             });
         }
 
+        // Melhorar a randomização para evitar repetições
+        let lastAnswers = {
+            tarot: null,
+            runas: null,
+            cristal: null,
+            numerologia: null
+        };
+        
         function generateAnswer() {
             const question = document.getElementById('userQuestion').value.trim();
             const oracleType = document.getElementById('oracleType').value;
@@ -1576,7 +1844,16 @@
             // Simular tempo de consulta
             setTimeout(() => {
                 const answers = oracleAnswers[oracleType];
-                const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+                let randomIndex;
+                
+                // Evitar repetição consecutiva da mesma resposta
+                do {
+                    randomIndex = Math.floor(Math.random() * answers.length);
+                } while (answers[randomIndex] === lastAnswers[oracleType] && answers.length > 1);
+                
+                lastAnswers[oracleType] = answers[randomIndex];
+                
+                const randomAnswer = answers[randomIndex];
                 
                 answerContainer.innerHTML = `
                     <div class="answer-success">
