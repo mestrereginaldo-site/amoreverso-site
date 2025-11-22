@@ -188,108 +188,37 @@
             font-size: 0.9rem;
         }
 
-        /* ===== ANIMAÇÃO DE CARTAS DE TAROT ===== */
+        /* ===== BOLA DE CRISTAL ANIMADA ===== */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            height: 500px;
         }
 
-        .tarot-cards {
-            position: relative;
+        .crystal-ball {
             width: 400px;
-            height: 500px;
+            height: 400px;
+            position: relative;
         }
 
-        .tarot-card {
-            position: absolute;
-            width: 200px;
-            height: 320px;
-            background: linear-gradient(145deg, #8B5CF6, #7C3AED);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1.5rem;
-            transition: all 0.5s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+        .crystal-inner {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(224, 247, 250, 0.6) 30%,
+                rgba(139, 92, 246, 0.3) 70%);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 100px rgba(255, 255, 255, 0.6),
+                0 0 80px rgba(139, 92, 246, 0.4);
+            animation: float 6s ease-in-out infinite;
         }
 
-        .tarot-card::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            pointer-events: none;
-        }
-
-        .card-top, .card-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .card-center {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .card-1 {
-            top: 0;
-            left: 0;
-            transform: rotate(-10deg);
-            background: linear-gradient(145deg, #EC4899, #8B5CF6);
-            z-index: 3;
-            animation: float-card-1 6s ease-in-out infinite;
-        }
-
-        .card-2 {
-            top: 40px;
-            left: 120px;
-            transform: rotate(5deg);
-            background: linear-gradient(145deg, #F59E0B, #EC4899);
-            z-index: 2;
-            animation: float-card-2 7s ease-in-out infinite;
-        }
-
-        .card-3 {
-            top: 80px;
-            left: 240px;
-            transform: rotate(15deg);
-            background: linear-gradient(145deg, #8B5CF6, #F59E0B);
-            z-index: 1;
-            animation: float-card-3 8s ease-in-out infinite;
-        }
-
-        @keyframes float-card-1 {
-            0%, 100% { transform: rotate(-10deg) translateY(0px); }
-            50% { transform: rotate(-12deg) translateY(-20px); }
-        }
-
-        @keyframes float-card-2 {
-            0%, 100% { transform: rotate(5deg) translateY(0px); }
-            50% { transform: rotate(3deg) translateY(-25px); }
-        }
-
-        @keyframes float-card-3 {
-            0%, 100% { transform: rotate(15deg) translateY(0px); }
-            50% { transform: rotate(17deg) translateY(-15px); }
-        }
-
-        .tarot-glow {
+        .crystal-glow {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -301,12 +230,65 @@
                 transparent 70%);
             border-radius: 50%;
             animation: pulse 4s ease-in-out infinite;
-            z-index: 0;
+        }
+
+        .crystal-reflections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .reflection {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: reflection-move 8s infinite linear;
+        }
+
+        .reflection-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .reflection-2 {
+            width: 50px;
+            height: 50px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .reflection-3 {
+            width: 30px;
+            height: 30px;
+            top: 40%;
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
             50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        @keyframes reflection-move {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, 20px) rotate(90deg); }
+            50% { transform: translate(0, 40px) rotate(180deg); }
+            75% { transform: translate(-30px, 20px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         /* ===== SEÇÕES GERAIS ===== */
@@ -995,22 +977,9 @@
                 transform: rotate(45deg) translate(-5px, -6px);
             }
             
-            .tarot-cards {
-                width: 300px;
-                height: 400px;
-            }
-            
-            .tarot-card {
-                width: 150px;
-                height: 240px;
-            }
-            
-            .card-2 {
-                left: 90px;
-            }
-            
-            .card-3 {
-                left: 180px;
+            .crystal-ball {
+                width: 280px;
+                height: 280px;
             }
             
             .oracle-options {
@@ -1073,22 +1042,9 @@
                 font-size: 2rem;
             }
             
-            .tarot-cards {
+            .crystal-ball {
                 width: 250px;
-                height: 350px;
-            }
-            
-            .tarot-card {
-                width: 120px;
-                height: 190px;
-            }
-            
-            .card-2 {
-                left: 75px;
-            }
-            
-            .card-3 {
-                left: 150px;
+                height: 250px;
             }
             
             .hero-stats {
@@ -1154,47 +1110,15 @@
             </div>
             
             <div class="hero-visual">
-                <div class="tarot-cards">
-                    <div class="tarot-card card-1">
-                        <div class="card-top">
-                            <span>I</span>
-                            <span>🃏</span>
-                        </div>
-                        <div class="card-center">
-                            🌙
-                        </div>
-                        <div class="card-bottom">
-                            <span>🃏</span>
-                            <span>I</span>
+                <div class="crystal-ball">
+                    <div class="crystal-inner">
+                        <div class="crystal-reflections">
+                            <div class="reflection reflection-1"></div>
+                            <div class="reflection reflection-2"></div>
+                            <div class="reflection reflection-3"></div>
                         </div>
                     </div>
-                    <div class="tarot-card card-2">
-                        <div class="card-top">
-                            <span>VII</span>
-                            <span>✨</span>
-                        </div>
-                        <div class="card-center">
-                            ⭐
-                        </div>
-                        <div class="card-bottom">
-                            <span>✨</span>
-                            <span>VII</span>
-                        </div>
-                    </div>
-                    <div class="tarot-card card-3">
-                        <div class="card-top">
-                            <span>XII</span>
-                            <span>💫</span>
-                        </div>
-                        <div class="card-center">
-                            🔮
-                        </div>
-                        <div class="card-bottom">
-                            <span>💫</span>
-                            <span>XII</span>
-                        </div>
-                    </div>
-                    <div class="tarot-glow"></div>
+                    <div class="crystal-glow"></div>
                 </div>
             </div>
         </div>
@@ -1716,7 +1640,33 @@
                 <br>• Seus talentos serão reconhecidos
 
                 <br><br><strong>Orientações:</strong>
-                Esteja aberto ao novo e confie nos sinais que receber.`
+                Esteja aberto ao novo e confie nos sinais que receber.`,
+
+                `🌟 <strong>Visão da Bola de Cristal:</strong> Transformação espiritual em andamento.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                Seu espírito está passando por um processo de purificação e elevação. Novos níveis de consciência estão se abrindo para você.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Despertar de dons intuitivos e psíquicos
+                <br>• Encontros com mestres espirituais (encarnados ou não)
+                <br>• Missão de vida se tornando mais clara
+
+                <br><br><strong>Orientações:</strong>
+                Medite regularmente e registre seus sonhos. Sua jornada espiritual está acelerando.`,
+
+                `💎 <strong>Visão da Bola de Cristal:</strong> Prosperidade material e espiritual.
+
+                <br><br><strong>Mensagem Detalhada:</strong>
+                A abundância está fluindo em sua direção de múltiplas formas. O universo está respondendo aos seus pedidos de maneira amplificada.
+
+                <br><br><strong>Revelações:</strong>
+                <br>• Oportunidades financeiras inesperadas
+                <br>• Reconhecimento por seu trabalho e talentos
+                <br>• Expansão em todas as áreas da vida
+
+                <br><br><strong>Orientações:</strong>
+                Mantenha uma mentalidade de gratidão e esteja aberto a receber.`
             ],
 
             numerologia: [
@@ -1757,7 +1707,20 @@
                 <br>• Preparação para novos começos
 
                 <br><br><strong>Aplicação Prática:</strong>
-                Liberte o que já cumpriu seu propósito. O número 9 prepara o terreno para reinícios abençoados.`
+                Liberte o que já cumpriu seu propósito. O número 9 prepara o terreno para reinícios abençoados.`,
+
+                `1️⃣ <strong>Número 1</strong> - Novos começos e liderança.
+
+                <br><br><strong>Vibração Energética:</strong>
+                O 1 representa iniciativa, independência e a semente de novos projetos.
+
+                <br><br><strong>Influências:</strong>
+                <br>• Início de ciclos importantes
+                <br>• Oportunidades para assumir liderança
+                <br>• Manifestação de ideias originais
+
+                <br><br><strong>Aplicação Prática:</strong>
+                Tome a iniciativa em projetos que estão no seu coração. O número 1 traz a energia do pioneiro.`
             ]
         };
 
@@ -1769,7 +1732,12 @@
         }
 
         // Melhorar a randomização para evitar repetições
-        let lastTarotAnswer = null;
+        let lastAnswers = {
+            tarot: null,
+            runas: null,
+            cristal: null,
+            numerologia: null
+        };
         
         function generateAnswer() {
             const question = document.getElementById('userQuestion').value.trim();
@@ -1805,11 +1773,9 @@
                 // Evitar repetição consecutiva da mesma resposta
                 do {
                     randomIndex = Math.floor(Math.random() * answers.length);
-                } while (oracleType === 'tarot' && answers[randomIndex] === lastTarotAnswer && answers.length > 1);
+                } while (answers[randomIndex] === lastAnswers[oracleType] && answers.length > 1);
                 
-                if (oracleType === 'tarot') {
-                    lastTarotAnswer = answers[randomIndex];
-                }
+                lastAnswers[oracleType] = answers[randomIndex];
                 
                 const randomAnswer = answers[randomIndex];
                 
