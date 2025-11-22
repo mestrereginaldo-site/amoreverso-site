@@ -746,12 +746,13 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .newsletter-content p {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             line-height: 1.6;
         }
 
@@ -789,6 +790,44 @@
         .newsletter-form button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== BOTÃO DO WHATSAPP FLUTUANTE ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         /* ===== FOOTER ===== */
@@ -966,6 +1005,14 @@
             .stat-number {
                 font-size: 1.8rem;
             }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -1078,14 +1125,14 @@
                     <div class="service-badge">Mais Popular</div>
                     <div class="service-icon">💎</div>
                     <h3 class="service-title">Relatório Detalhado</h3>
-                    <div class="service-price">R$ 9,90</div>
+                    <div class="service-price">R$ 19,90</div>
                     <ul class="service-features">
                         <li>Análise completa da pergunta</li>
                         <li>PDF personalizado</li>
                         <li>Previsão para 30 dias</li>
                         <li>Ritual personalizado</li>
                     </ul>
-                    <button class="service-button premium-btn" onclick="buyReport()">Comprar Agora</button>
+                    <button class="service-button premium-btn" onclick="redirectToWhatsApp('Olá, gostaria de comprar o Relatório Detalhado por R$ 19,90.')">Comprar Agora</button>
                 </div>
                 
                 <!-- Serviço VIP -->
@@ -1099,7 +1146,7 @@
                         <li>Plano de ação espiritual</li>
                         <li>Suporte por 7 dias</li>
                     </ul>
-                    <button class="service-button vip-btn">Agendar Consulta</button>
+                    <button class="service-button vip-btn" onclick="redirectToWhatsApp('Olá, gostaria de agendar uma Consulta com Especialista.')">Agendar Consulta</button>
                 </div>
             </div>
         </div>
@@ -1368,6 +1415,11 @@
         </div>
     </footer>
 
+    <!-- Botão do WhatsApp Flutuante -->
+    <a href="https://wa.me/5571983389346?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20do%20Amoreverso" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <span>💬</span>
+    </a>
+
     <script>
         // ===== SISTEMA DE ORÁCULO COM RESPOSTAS COMPLETAS =====
         const oracleAnswers = {
@@ -1540,9 +1592,9 @@
                                 <span>📤</span>
                                 Compartilhar Revelação
                             </button>
-                            <button class="premium-btn" onclick="buyReport()">
+                            <button class="premium-btn" onclick="redirectToWhatsApp('Olá, gostaria de comprar o Relatório Detalhado por R$ 19,90.')">
                                 <span>💎</span>
-                                Relatório Completo (R$ 9,90)
+                                Relatório Completo (R$ 19,90)
                             </button>
                         </div>
                     </div>
@@ -1577,10 +1629,11 @@
             }
         }
 
-        function buyReport() {
-            const question = document.getElementById('userQuestion').value;
-            alert(`✨ Relatório Especial Gerado!\n\nPergunta: "${question}"\n\nRedirecionando para página de pagamento seguro...`);
-            // Aqui você integraria com o gateway de pagamento
+        function redirectToWhatsApp(message) {
+            const phoneNumber = '5571983389346';
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         function handleNewsletter(event) {
